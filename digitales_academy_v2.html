@@ -1,0 +1,2249 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="theme-color" content="#1E3A5F"/>
+<title>DIGITALES Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.5.0/dist/tabler-icons.min.css">
+<style>
+:root{
+  /* Couleurs primaires — bleu institutionnel */
+  --brand:#1E3A5F; --brand-2:#2D5282; --brand-3:#162D48;
+  /* Accent — CTA principaux uniquement */
+  --acc:#D97706; --acc-2:#B45309;
+  /* Vert — validation, certificats, succès */
+  --grn:#15803D; --grn-bg:#F0FDF4; --grn-dk:#14532D;
+  /* Rouge — erreurs uniquement */
+  --red:#991B1B; --red-bg:#FEF2F2;
+  /* Violet — IA uniquement */
+  --ai:#5B21B6; --ai-bg:#F5F3FF; --ai-dk:#3B0764;
+  /* Neutrals */
+  --bg:#F8FAFC; --bg-2:#F1F5F9; --card:#FFFFFF;
+  --txt:#0F172A; --txt-2:#334155; --mut:#64748B; --mut-2:#94A3B8;
+  --bdr:rgba(15,23,42,0.08); --bdr-2:rgba(15,23,42,0.05);
+  --shadow-sm:0 1px 3px rgba(15,23,42,.06), 0 1px 2px rgba(15,23,42,.04);
+  --shadow-md:0 4px 12px -2px rgba(15,23,42,.08), 0 2px 6px -2px rgba(15,23,42,.04);
+  --shadow-lg:0 10px 24px -6px rgba(15,23,42,.12);
+  --r-sm:8px; --r:12px; --r-lg:16px;
+  --tap:44px;
+  /* Sponsorisé */
+  --sponsored:#166534; --sponsored-bg:#DCFCE7;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+html,body{font-family:'Inter',system-ui,sans-serif;color:var(--txt);background:var(--bg);font-size:15px;line-height:1.45;}
+body{min-height:100vh;min-height:100dvh;overflow-x:hidden;}
+button{font-family:inherit;cursor:pointer;color:inherit;}
+input,textarea{font-family:inherit;}
+a{color:inherit;text-decoration:none;}
+img{display:block;max-width:100%;}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+
+/* Natural mobile-first layout — full page scroll, no mockup chrome */
+.app{
+  position:relative;
+  width:100%;
+  max-width:560px;
+  margin:0 auto;
+  background:var(--bg);
+  min-height:100vh; min-height:100dvh;
+  padding-bottom:96px; /* room for fixed bottom nav */
+}
+@media (min-width:760px){
+  body{background:var(--bg-2);}
+  .app{
+    box-shadow:0 0 40px -20px rgba(13,27,46,.15);
+  }
+}
+.status-bar{display:none;}
+
+/* ─── Pages ─── */
+.page{display:none;animation:pop .25s ease;}
+.page.on{display:block;}
+@keyframes pop{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+/* ─── App header ─── */
+.appbar{
+  background:var(--brand);
+  padding:8px 16px 14px;
+  color:#fff;
+  position:relative;
+}
+.appbar.light{background:#fff;color:var(--txt);border-bottom:1px solid var(--bdr);}
+.appbar-row{display:flex;align-items:center;gap:10px;min-height:44px;}
+.logo{
+  font-family:'IBM Plex Sans',sans-serif;font-weight:800;font-size:18px;letter-spacing:.3px;
+  flex:1;line-height:1;
+}
+.logo span{color:var(--acc);}
+.icon-btn{
+  width:40px;height:40px;border-radius:8px;background:rgba(255,255,255,.08);
+  border:none;color:inherit;display:inline-flex;align-items:center;justify-content:center;
+  position:relative;flex-shrink:0;
+  transition:transform .15s ease,background .15s ease;
+}
+.icon-btn:hover{background:rgba(255,255,255,.14);}
+.icon-btn:active{transform:scale(.94);}
+.appbar.light .icon-btn{background:var(--bg);color:var(--brand);}
+.icon-btn i{font-size:20px;}
+.icon-btn .dot{
+  position:absolute;top:8px;right:8px;width:8px;height:8px;background:var(--acc);
+  border-radius:50%;border:2px solid var(--brand);
+}
+.appbar.light .icon-btn .dot{border-color:#fff;}
+
+/* Back button row */
+.back-btn{
+  display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 10px 0 4px;
+  background:none;border:none;font-size:14px;font-weight:500;color:var(--brand);
+  border-radius:10px;
+}
+.back-btn i{font-size:20px;}
+
+/* ─── Hero ─── */
+.hero{
+  background: linear-gradient(160deg, #1E3A5F 0%, #2D5282 100%);
+  color:#fff;
+  padding:18px 18px 26px;
+  position:relative;overflow:hidden;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,.12);
+  font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;
+  padding:6px 12px;border-radius:99px;color:#fff;margin-bottom:14px;
+  border:1px solid rgba(255,255,255,.15);
+}
+.hero h1{
+  font-family:'IBM Plex Sans',sans-serif;font-weight:800;font-size:26px;line-height:1.15;
+  margin-bottom:10px;letter-spacing:-.5px;
+  text-wrap:balance;
+}
+.hero h1 em{font-style:normal;color:var(--acc);}
+.hero p{font-size:14px;color:rgba(255,255,255,.78);margin-bottom:18px;max-width:32ch;}
+.hero-stats{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:rgba(255,255,255,.08);
+  border-radius:14px;overflow:hidden;margin-bottom:18px;
+  border:1px solid rgba(255,255,255,.08);
+}
+.hs{padding:14px 6px;text-align:center;background:rgba(0,0,0,.10);}
+.hs strong{
+  display:block;font-family:'IBM Plex Sans',sans-serif;font-size:22px;font-weight:800;color:#fff;
+  line-height:1;margin-bottom:4px;
+}
+.hs span{font-size:10.5px;color:rgba(255,255,255,.6);letter-spacing:.2px;}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  height:48px;padding:0 20px;border-radius:14px;border:none;
+  font-family:'Inter',sans-serif;font-weight:700;font-size:14.5px;
+  transition:transform .15s ease,box-shadow .15s ease,filter .15s ease;
+  white-space:nowrap;
+}
+.btn:active{transform:scale(.97);}
+.btn-primary{background:var(--acc);color:#fff;box-shadow:0 4px 12px -4px rgba(217,119,6,.4);}
+.btn-primary:hover{filter:brightness(1.05);}
+.btn-dark{background:var(--brand);color:#fff;}
+.btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.18);}
+.btn-outline{background:#fff;color:var(--brand);border:1px solid var(--bdr);}
+.btn-full{width:100%;}
+.btn-sm{height:38px;padding:0 14px;font-size:13px;border-radius:10px;}
+
+/* ─── Search & cats ─── */
+.search-wrap{padding:14px 16px 8px;background:#fff;position:sticky;top:0;z-index:30;border-bottom:1px solid var(--bdr-2);}
+.search-row{display:flex;gap:8px;}
+.sbox{
+  flex:1;display:flex;align-items:center;gap:10px;
+  background:var(--bg);border:1px solid var(--bdr);border-radius:12px;
+  padding:0 14px;height:44px;
+}
+.sbox i{color:var(--mut);font-size:18px;}
+.sbox input{border:none;background:none;font-size:14.5px;color:var(--txt);outline:none;flex:1;min-width:0;}
+.sbox input::placeholder{color:var(--mut-2);}
+.filter-btn{
+  width:44px;height:44px;border-radius:12px;background:var(--bg-2);color:var(--txt-2);
+  border:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;position:relative;
+}
+.filter-btn i{font-size:19px;}
+.filter-btn .bdg{
+  position:absolute;top:-4px;right:-4px;background:var(--brand);color:#fff;
+  font-size:10px;font-weight:700;border-radius:99px;min-width:16px;height:16px;
+  padding:0 4px;display:flex;align-items:center;justify-content:center;
+}
+.cats{
+  display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:12px 0 4px;
+  margin:0 -16px;padding-left:16px;padding-right:16px;
+}
+.cats::-webkit-scrollbar{display:none;}
+.cat{
+  flex-shrink:0;display:inline-flex;align-items:center;gap:6px;
+  height:36px;padding:0 14px;border-radius:99px;
+  background:#fff;border:1px solid var(--bdr);
+  font-size:13px;font-weight:500;color:var(--txt-2);
+  transition:all .15s ease;
+}
+.cat:active{transform:scale(.95);}
+.cat.on{background:var(--brand);color:#fff;border-color:var(--brand);}
+.cat i{font-size:15px;}
+
+/* ─── Sections ─── */
+.section{padding:20px 16px 8px;}
+.sec-hd{
+  display:flex;align-items:baseline;justify-content:space-between;
+  margin-bottom:14px;
+}
+.sec-hd h2{
+  font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:17px;
+  letter-spacing:-.2px;color:var(--txt);
+}
+.sec-hd .see-all{font-size:13px;font-weight:600;color:var(--brand-2);display:inline-flex;align-items:center;gap:2px;}
+.sec-hd .see-all i{font-size:16px;}
+
+/* ─── Continue learning card (hero card on Apprenant) ─── */
+.continue-card{
+  background:linear-gradient(160deg,#1E3A5F 0%,#2D5282 100%);
+  color:#fff;border-radius:16px;padding:18px;
+  position:relative;overflow:hidden;
+  box-shadow:var(--shadow-md);
+}
+.continue-card .label{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:6px;}
+.continue-card h3{font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:18px;line-height:1.25;margin-bottom:12px;max-width:24ch;}
+.continue-card .progress-row{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.continue-card .progress-row .pct{font-family:'IBM Plex Sans',sans-serif;font-weight:800;font-size:14px;}
+.continue-bar{flex:1;height:6px;background:rgba(255,255,255,.15);border-radius:99px;overflow:hidden;}
+.continue-bar > div{height:100%;background:var(--acc);border-radius:99px;}
+.continue-card .next{font-size:12.5px;color:rgba(255,255,255,.7);margin-bottom:14px;display:flex;align-items:center;gap:6px;}
+.continue-card .next i{font-size:15px;}
+.continue-card .btn{background:#fff;color:var(--brand);height:42px;padding:0 18px;font-size:13.5px;}
+
+/* ─── Course cards (catalogue) ─── */
+.courses{display:flex;flex-direction:column;gap:14px;padding:0 16px;}
+.ccard{
+  background:#fff;border:1px solid var(--bdr-2);border-radius:18px;
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:transform .15s ease,box-shadow .15s ease;
+  box-shadow:var(--shadow-sm);
+}
+.ccard:active{transform:scale(.99);}
+.cthumb{
+  height:110px;padding:12px;
+  display:flex;align-items:flex-start;justify-content:space-between;
+  position:relative;overflow:hidden;color:#fff;
+}
+.cthumb.blue   { background: #1E3A5F; }
+.cthumb.teal   { background: #15803D; }
+.cthumb.purple { background: #4C1D95; }
+.cthumb.orange { background: #92400E; }
+.cthumb.red    { background: #991B1B; }
+.thumb-ico{
+  width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.18);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;z-index:1;
+}
+.thumb-ico i{font-size:22px;color:#fff;}
+.cbadge{
+  position:relative;z-index:1;
+  background:rgba(255,255,255,0.15);color:#fff;
+  font-size:10px;font-weight:600;letter-spacing:.3px;text-transform:uppercase;
+  padding:4px 8px;border-radius:6px;border:1px solid rgba(255,255,255,.2);
+  display:inline-flex;align-items:center;gap:4px;
+}
+.cbadge.free{background:#fff;color:var(--grn-dk);border-color:transparent;}
+.cbadge.sponsored{background:var(--sponsored);color:#fff;border-color:transparent;}
+.cthumb .corner{position:absolute;right:12px;bottom:12px;z-index:1;font-size:11px;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:4px;}
+.cthumb .corner i{font-size:13px;}
+.cbody{padding:12px;display:flex;flex-direction:column;gap:10px;}
+.ctag{
+  font-size:10.5px;font-weight:700;color:var(--brand-2);
+  text-transform:uppercase;letter-spacing:.6px;
+  display:inline-flex;align-items:center;gap:5px;
+}
+.ctitle{font-family:'IBM Plex Sans',sans-serif;font-size:15px;font-weight:700;line-height:1.25;color:var(--txt);letter-spacing:-.2px;}
+.cmeta{display:flex;gap:14px;flex-wrap:wrap;}
+.cmeta span{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--mut);}
+.cmeta i{font-size:14px;color:var(--brand-2);}
+.cfoot{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:12px;margin-top:2px;border-top:1px dashed var(--bdr);
+}
+.cprice{font-family:'IBM Plex Sans',sans-serif;font-size:18px;font-weight:800;color:var(--brand);line-height:1;}
+.cprice sub{font-size:10.5px;font-weight:500;color:var(--mut);font-family:'Inter',sans-serif;margin-left:2px;}
+.cprice .strike{font-size:12px;color:var(--mut-2);text-decoration:line-through;margin-right:6px;font-weight:500;}
+
+/* ─── Promo banner ─── */
+.promo{
+  margin:18px 16px 0;border-radius:18px;padding:18px;color:#fff;
+  background: linear-gradient(135deg, #1E3A5F 0%, #15803D 100%);
+  position:relative;overflow:hidden;
+}
+.promo .badge-promo{
+  display:inline-flex;align-items:center;gap:5px;
+  background:var(--acc);color:#1a1a1a;font-size:11px;font-weight:700;
+  padding:4px 10px;border-radius:99px;margin-bottom:10px;letter-spacing:.4px;text-transform:uppercase;
+}
+.promo h3{font-family:'IBM Plex Sans',sans-serif;font-size:18px;font-weight:800;margin-bottom:6px;line-height:1.25;}
+.promo p{font-size:13px;color:rgba(255,255,255,.78);margin-bottom:14px;max-width:32ch;}
+.promo .row{display:flex;align-items:center;gap:12px;}
+.promo .save{font-size:13px;color:rgba(255,255,255,.7);}
+.promo .save b{color:var(--acc);font-weight:700;}
+
+/* ─── Bottom tab nav ─── */
+.bottom-nav{
+  position:fixed;left:50%;transform:translateX(-50%);bottom:0;z-index:50;
+  width:100%;max-width:560px;
+  background:#ffffff;
+  border-top:1px solid var(--bdr);
+  display:grid;grid-template-columns:repeat(5,1fr);
+  padding:8px 4px calc(8px + env(safe-area-inset-bottom));
+  box-shadow:0 -2px 8px rgba(15,23,42,.06);
+}
+.bn-btn{
+  background:none;border:none;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+  padding:6px 4px;color:var(--mut);font-size:10.5px;font-weight:500;
+  border-radius:10px;min-height:48px;position:relative;
+  transition:color .15s ease;
+}
+.bn-btn i{font-size:21px;}
+.bn-btn.on{color:var(--brand);font-weight:600;}
+.bn-btn.on::before{
+  content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:20px;height:3px;background:var(--brand);border-radius:0 0 3px 3px;
+}
+.bn-btn .bn-dot{
+  position:absolute;top:6px;right:calc(50% - 18px);
+  background:var(--red);color:#fff;font-size:9px;font-weight:700;
+  min-width:16px;height:16px;border-radius:99px;padding:0 4px;
+  display:flex;align-items:center;justify-content:center;border:2px solid #fff;
+}
+
+/* ─── COURSE DETAIL ─── */
+.cd-hero{
+  background: linear-gradient(160deg,#1E3A5F,#2D5282);
+  color:#fff;padding:14px 18px 22px;position:relative;
+}
+.cd-hero .cd-tag{
+  display:inline-flex;align-items:center;gap:5px;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);
+  padding:5px 11px;border-radius:99px;font-size:11px;font-weight:600;color:#fff;
+  text-transform:uppercase;letter-spacing:.4px;margin-bottom:12px;
+}
+.cd-hero .cd-tag i{font-size:13px;color:var(--acc);}
+.cd-hero h1{
+  font-family:'IBM Plex Sans',sans-serif;font-weight:800;font-size:24px;line-height:1.2;
+  margin-bottom:10px;letter-spacing:-.3px;text-wrap:balance;
+}
+.cd-hero p{font-size:14px;color:rgba(255,255,255,.78);margin-bottom:14px;}
+.cd-meta{display:flex;flex-wrap:wrap;gap:8px 14px;margin-bottom:14px;}
+.cd-meta span{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;color:rgba(255,255,255,.85);}
+.cd-meta i{font-size:15px;color:var(--acc);}
+.rating{display:inline-flex;align-items:center;gap:8px;background:rgba(0,0,0,.18);padding:6px 12px;border-radius:99px;}
+.stars{color:var(--acc);font-size:14px;letter-spacing:1px;}
+.rating .rt{font-size:13px;font-weight:600;}
+.rating .rn{font-size:12px;color:rgba(255,255,255,.65);}
+
+/* Sticky buy bar */
+.buy-bar{
+  position:sticky;top:0;z-index:35;
+  background:#fff;border-bottom:1px solid var(--bdr);
+  padding:12px 16px;
+  display:flex;align-items:center;gap:10px;
+  box-shadow:var(--shadow-sm);
+}
+.buy-bar .pb{flex:1;}
+.buy-bar .pbig{font-family:'IBM Plex Sans',sans-serif;font-size:22px;font-weight:800;color:var(--brand);line-height:1;}
+.buy-bar .pbig sub{font-size:11px;font-weight:500;color:var(--mut);font-family:'Inter',sans-serif;margin-left:2px;}
+.buy-bar .ptag{font-size:11px;color:var(--mut);margin-top:3px;display:flex;align-items:center;gap:4px;}
+.buy-bar .ptag i{font-size:13px;color:var(--grn);}
+.buy-bar .btn-buy{flex-shrink:0;}
+.icon-square{
+  width:44px;height:44px;border-radius:12px;background:var(--bg);border:1px solid var(--bdr);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.icon-square i{font-size:20px;color:var(--brand);}
+
+/* Tabs */
+.tabs{
+  position:sticky;top:69px;z-index:30;
+  background:#fff;border-bottom:1px solid var(--bdr);
+  display:flex;padding:0 16px;
+}
+.tab{
+  flex:1;background:none;border:none;font-family:inherit;
+  padding:14px 4px;font-size:13.5px;font-weight:600;color:var(--mut);
+  position:relative;
+}
+.tab.on{color:var(--brand);}
+.tab.on::after{
+  content:"";position:absolute;left:50%;bottom:-1px;transform:translateX(-50%);
+  width:36px;height:3px;background:var(--brand);border-radius:3px 3px 0 0;
+}
+
+/* Tab content */
+.tab-content{display:none;padding:20px 16px 100px;}
+.tab-content.on{display:block;}
+
+.about-h{font-family:'IBM Plex Sans',sans-serif;font-weight:800;font-size:16px;margin-bottom:12px;letter-spacing:-.2px;}
+.about-p{font-size:14px;color:var(--txt-2);line-height:1.6;margin-bottom:16px;}
+
+.inc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;}
+.inc-item{
+  background:#fff;border:1px solid var(--bdr-2);border-radius:12px;
+  padding:12px;display:flex;align-items:flex-start;gap:10px;
+}
+.inc-item i{font-size:20px;color:var(--brand-2);flex-shrink:0;margin-top:1px;}
+.inc-item .it{font-size:12.5px;font-weight:600;color:var(--txt);line-height:1.3;}
+.inc-item .iv{font-size:11px;color:var(--mut);margin-top:2px;}
+
+.objectives{display:flex;flex-direction:column;gap:8px;margin-bottom:18px;}
+.obj{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:10px 12px;background:var(--grn-bg);border-radius:10px;
+}
+.obj i{font-size:18px;color:var(--grn);flex-shrink:0;margin-top:1px;}
+.obj p{font-size:13px;color:var(--grn-dk);line-height:1.4;}
+
+.inst-box{
+  display:flex;align-items:center;gap:12px;
+  background:#fff;border:1px solid var(--bdr-2);border-radius:14px;padding:14px;
+  margin-bottom:20px;
+}
+.iav{
+  width:50px;height:50px;border-radius:50%;
+  background:var(--brand);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:16px;flex-shrink:0;
+}
+.iinfo{flex:1;}
+.iinfo p{font-size:14.5px;font-weight:700;color:var(--txt);}
+.iinfo span{font-size:12px;color:var(--mut);display:block;margin-top:2px;}
+.iinfo .lk{font-size:12px;color:var(--brand-2);font-weight:600;display:inline-flex;align-items:center;gap:3px;margin-top:6px;}
+
+/* Curriculum modules */
+.curriculum-info{
+  background:var(--bg);padding:12px 14px;border-radius:12px;margin-bottom:14px;
+  font-size:12.5px;color:var(--mut);display:flex;justify-content:space-between;
+}
+.curriculum-info b{color:var(--txt);}
+.modules{display:flex;flex-direction:column;gap:8px;}
+.mod{
+  background:#fff;border:1px solid var(--bdr-2);border-radius:12px;overflow:hidden;
+}
+.mod-h{
+  display:flex;align-items:center;gap:12px;padding:13px 14px;background:#fff;
+  border:none;width:100%;text-align:left;
+}
+.mnum{
+  width:32px;height:32px;border-radius:10px;
+  background:var(--bg-2);color:var(--brand);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'IBM Plex Sans',sans-serif;font-weight:800;font-size:13px;flex-shrink:0;
+}
+.mnum.done{background:var(--grn-bg);color:var(--grn);}
+.mnum.done i{font-size:18px;}
+.mt{flex:1;}
+.mt .mn{font-size:14px;font-weight:600;color:var(--txt);line-height:1.3;}
+.mt .mv{font-size:11.5px;color:var(--mut);margin-top:3px;display:flex;align-items:center;gap:8px;}
+.mt .mv span{display:inline-flex;align-items:center;gap:3px;}
+.mt .mv i{font-size:13px;}
+.mod-h .caret{font-size:20px;color:var(--mut-2);transition:transform .2s ease;}
+.mod.open .caret{transform:rotate(90deg);}
+.mod-body{display:none;padding:6px 14px 14px 58px;border-top:1px solid var(--bdr-2);background:var(--bg);}
+.mod.open .mod-body{display:block;}
+.lesson{
+  display:flex;align-items:center;gap:10px;padding:10px 0;
+  font-size:13px;color:var(--txt-2);
+  border-bottom:1px dashed var(--bdr-2);
+}
+.lesson:last-child{border-bottom:none;}
+.lesson > i{font-size:16px;color:var(--brand-2);flex-shrink:0;}
+.lesson .ln{flex:1;}
+.ftag{font-size:10px;font-weight:700;padding:3px 8px;border-radius:99px;background:var(--grn-bg);color:var(--grn-dk);letter-spacing:.3px;}
+.ftag.lock{background:var(--bg-2);color:var(--mut);}
+
+/* Reviews */
+.rev-summary{
+  background:#fff;border:1px solid var(--bdr-2);border-radius:14px;padding:16px;
+  margin-bottom:14px;display:flex;align-items:center;gap:16px;
+}
+.rev-score{text-align:center;flex-shrink:0;}
+.rev-score .big{font-family:'IBM Plex Sans',sans-serif;font-weight:800;font-size:38px;line-height:1;color:var(--txt);}
+.rev-score .stars{font-size:13px;margin-top:4px;}
+.rev-score .nb{font-size:11px;color:var(--mut);margin-top:4px;}
+.rev-bars{flex:1;display:flex;flex-direction:column;gap:4px;}
+.rev-bar{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--mut);}
+.rev-bar .lab{width:22px;text-align:right;}
+.rev-bar .bar{flex:1;height:5px;background:var(--bg-2);border-radius:99px;overflow:hidden;}
+.rev-bar .bar > div{height:100%;background:var(--acc);border-radius:99px;}
+.rev-bar .num{width:24px;text-align:left;color:var(--mut-2);}
+.rev{
+  background:#fff;border:1px solid var(--bdr-2);border-radius:14px;padding:14px;
+  margin-bottom:10px;
+}
+.rh{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.rav{
+  width:38px;height:38px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,#7F77DD,#534AB7);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:13px;
+}
+.rh .ri{flex:1;}
+.rh .rn{font-size:13.5px;font-weight:600;color:var(--txt);}
+.rh .rd{font-size:11px;color:var(--mut);margin-top:1px;}
+.rh .rs{font-size:13px;color:var(--acc);}
+.rt{font-size:13px;color:var(--txt-2);line-height:1.55;}
+
+/* Guarantee box */
+.gbox{
+  display:flex;align-items:center;gap:14px;
+  background:var(--grn-bg);border:1px solid rgba(15,110,86,.15);
+  border-radius:14px;padding:14px;margin-top:14px;
+}
+.gbox > i{font-size:32px;color:var(--grn);flex-shrink:0;}
+.gbox strong{display:block;font-size:14px;color:var(--grn-dk);margin-bottom:2px;}
+.gbox p{font-size:12.5px;color:var(--grn-dk);line-height:1.45;}
+
+/* Payment methods preview */
+.pay-options{
+  display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;
+}
+.pay{
+  background:#fff;border:1px solid var(--bdr);border-radius:10px;
+  padding:6px 10px;font-size:11px;font-weight:600;color:var(--txt-2);
+  display:inline-flex;align-items:center;gap:5px;
+}
+.pay i{font-size:14px;}
+.pay.om{color:#F47B22;}
+.pay.mtn{color:#E5A800;}
+.pay.wave{color:#2D9CE0;}
+.pay.cb{color:var(--brand);}
+
+/* ─── APPRENANT (Learner dashboard) ─── */
+.user-band{
+  background:linear-gradient(160deg,#1E3A5F 0%,#162D48 100%);
+  color:#fff;padding:16px 18px 24px;position:relative;overflow:hidden;
+}
+.welcome{display:flex;align-items:center;gap:12px;margin-bottom:18px;position:relative;}
+.uav{
+  width:48px;height:48px;border-radius:14px;
+  background:var(--acc);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:16px;flex-shrink:0;
+}
+.welcome .wt{flex:1;min-width:0;}
+.welcome .wt p{font-size:12px;color:rgba(255,255,255,.6);margin-bottom:2px;}
+.welcome .wt strong{font-size:16.5px;font-family:'IBM Plex Sans',sans-serif;font-weight:700;color:#fff;}
+.welcome .streak{
+  display:inline-flex;align-items:center;gap:5px;
+  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.15);
+  border-radius:99px;padding:6px 12px;font-size:12px;font-weight:600;color:#fff;
+}
+.welcome .streak i{color:#FF7847;font-size:15px;}
+
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;position:relative;}
+.sb{
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.10);
+  border-radius:14px;padding:12px 8px;text-align:center;
+}
+.sb strong{display:block;font-family:'IBM Plex Sans',sans-serif;font-size:22px;font-weight:800;color:#fff;line-height:1;margin-bottom:4px;}
+.sb span{font-size:10.5px;color:rgba(255,255,255,.62);line-height:1.2;display:block;}
+
+/* Course progress card */
+.cp{
+  background:#fff;border:1px solid var(--bdr-2);border-radius:16px;
+  padding:14px;margin-bottom:10px;
+  box-shadow:var(--shadow-sm);
+}
+.cp-top{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.cpico{
+  width:44px;height:44px;border-radius:12px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.cpico i{font-size:22px;color:#fff;}
+.cpico.blue{background:#1E3A5F;}
+.cpico.teal{background:#15803D;}
+.cpico.purple{background:#4C1D95;}
+.cpico.orange{background:#92400E;}
+.cpinfo{flex:1;min-width:0;}
+.cptag{font-size:10.5px;font-weight:700;color:var(--brand-2);text-transform:uppercase;letter-spacing:.4px;margin-bottom:3px;}
+.cptitle{font-size:14px;font-weight:600;color:var(--txt);line-height:1.3;}
+.cppct{font-family:'IBM Plex Sans',sans-serif;font-size:18px;font-weight:800;color:var(--brand);flex-shrink:0;}
+.pb{height:7px;background:var(--bg-2);border-radius:99px;overflow:hidden;margin-bottom:12px;}
+.pbf{height:100%;border-radius:99px;}
+.pbf.b{background:var(--brand);}
+.pbf.a{background:var(--acc);}
+.pbf.g{background:var(--grn);}
+.cp-bot{display:flex;align-items:center;justify-content:space-between;}
+.cpmeta{display:flex;gap:10px;flex-wrap:wrap;}
+.cpmeta span{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;color:var(--mut);}
+.cpmeta i{font-size:13px;color:var(--brand-2);}
+
+/* Certificate row */
+.cert-row{
+  background:#fff;border:1px solid var(--bdr-2);border-radius:14px;
+  padding:14px;display:flex;align-items:center;gap:12px;margin-bottom:8px;
+}
+.cert-row.locked{background:var(--bg);border-style:dashed;}
+.cico{
+  width:52px;height:52px;border-radius:12px;flex-shrink:0;
+  background:linear-gradient(135deg,#FAEEDA,#F4A623);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+.cico i{font-size:26px;color:var(--brand);}
+.cico .qr-mini{
+  position:absolute;bottom:-3px;right:-3px;
+  width:22px;height:22px;background:#fff;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  border:2px solid #fff;
+}
+.cico .qr-mini i{font-size:14px;color:var(--brand);}
+.cert-row.locked .cico{background:var(--bg-2);}
+.cert-row.locked .cico i{color:var(--mut);}
+.cinfo{flex:1;min-width:0;}
+.cn{font-size:14px;font-weight:700;color:var(--txt);margin-bottom:2px;}
+.cd2{font-size:11.5px;color:var(--mut);line-height:1.35;}
+.cd2 b{color:var(--brand);font-weight:700;}
+.cert-row .btn-dl{
+  background:var(--brand);color:#fff;border:none;border-radius:10px;
+  padding:0 12px;height:36px;font-size:12.5px;font-weight:600;flex-shrink:0;
+  display:inline-flex;align-items:center;gap:5px;
+}
+.cert-row .btn-dl i{font-size:15px;}
+.cert-row.locked .btn-dl{background:var(--bg-2);color:var(--mut);}
+
+/* Activity feed */
+.act-list{background:#fff;border:1px solid var(--bdr-2);border-radius:14px;overflow:hidden;}
+.ai{display:flex;align-items:flex-start;gap:12px;padding:13px 14px;border-bottom:1px solid var(--bdr-2);}
+.ai:last-child{border-bottom:none;}
+.adot{
+  width:34px;height:34px;border-radius:10px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.adot i{font-size:16px;}
+.adot.g{background:var(--grn-bg);color:var(--grn);}
+.adot.b{background:#E0EAF6;color:var(--brand-2);}
+.adot.a{background:#FAEEDA;color:#854F0B;}
+.adot.p{background:#E6E4FA;color:var(--purple);}
+.atxt{flex:1;min-width:0;}
+.atxt p{font-size:13px;color:var(--txt);line-height:1.35;margin-bottom:3px;}
+.atxt p b{font-weight:600;}
+.atxt span{font-size:11px;color:var(--mut);}
+
+/* ─── ADMIN ─── */
+.adm-band{
+  background:linear-gradient(160deg,#1E3A5F 0%,#162D48 100%);
+  color:#fff;padding:16px 18px 22px;position:relative;overflow:hidden;
+}
+.adm-band h2{font-family:'IBM Plex Sans',sans-serif;font-weight:800;font-size:22px;letter-spacing:-.3px;margin-bottom:4px;}
+.adm-band > .sub{font-size:12.5px;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:6px;margin-bottom:18px;}
+.adm-band > .sub i{font-size:14px;color:var(--acc);}
+.kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:relative;}
+.kpi{
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);
+  border-radius:14px;padding:14px;
+}
+.kpi .lab{font-size:11px;color:rgba(255,255,255,.6);margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;}
+.kpi .lab i{font-size:14px;color:var(--acc);}
+.kpi strong{font-family:'IBM Plex Sans',sans-serif;font-size:22px;font-weight:800;color:#fff;line-height:1;}
+.kpi strong small{font-size:11px;font-weight:500;color:rgba(255,255,255,.5);margin-left:3px;font-family:'Inter',sans-serif;}
+.kpi .trend{font-size:11px;color:#3FD68A;font-weight:600;margin-top:6px;display:inline-flex;align-items:center;gap:3px;}
+.kpi .trend.dn{color:#FF8B8B;}
+.kpi .trend i{font-size:13px;}
+
+.chart-box{
+  background:#fff;border:1px solid var(--bdr-2);border-radius:16px;
+  padding:16px;margin-bottom:12px;
+}
+.chart-title{font-size:13.5px;font-weight:700;color:var(--txt);margin-bottom:4px;}
+.chart-sub{font-size:11px;color:var(--mut);margin-bottom:14px;}
+.bars{display:flex;align-items:flex-end;gap:6px;height:100px;}
+.bc{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;min-width:0;}
+.bv{font-size:10px;font-weight:700;color:var(--brand);}
+.bar{width:100%;border-radius:5px 5px 0 0;min-height:6px;background:var(--brand-2);}
+.bl{font-size:10px;color:var(--mut);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;}
+
+/* Admin menu items */
+.ami{
+  background:#fff;border:1px solid var(--bdr-2);border-radius:14px;
+  padding:14px;display:flex;align-items:center;gap:12px;margin-bottom:8px;
+}
+.ami-ico{
+  width:42px;height:42px;border-radius:12px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.ami-ico i{font-size:21px;color:#fff;}
+.ami-ico.blue{background:var(--brand);}
+.ami-ico.teal{background:var(--grn);}
+.ami-ico.amber{background:#BA7517;}
+.ami-ico.red{background:var(--red);}
+.ami-ico.purple{background:var(--purple);}
+.ami-txt{flex:1;min-width:0;}
+.ami-txt p{font-size:14.5px;font-weight:600;color:var(--txt);}
+.ami-txt span{font-size:12px;color:var(--mut);display:block;margin-top:2px;}
+.ami .bdg{
+  font-size:11px;font-weight:700;padding:4px 10px;border-radius:99px;flex-shrink:0;
+}
+.ami .bdg.b{background:#E0EAF6;color:var(--brand);}
+.ami .bdg.g{background:var(--grn-bg);color:var(--grn-dk);}
+.ami .bdg.a{background:#FAEEDA;color:#633806;}
+
+/* ─── PROFILE ─── */
+.prof-hero{
+  background:linear-gradient(160deg,#1E3A5F,#162D48);
+  color:#fff;text-align:center;padding:18px 18px 30px;position:relative;overflow:hidden;
+}
+.prof-av{
+  width:84px;height:84px;border-radius:24px;margin:6px auto 14px;position:relative;
+  background:var(--acc);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:28px;
+  box-shadow:0 6px 18px -6px rgba(0,0,0,.2);
+}
+.prof-av .edit{
+  position:absolute;bottom:-4px;right:-4px;
+  width:28px;height:28px;border-radius:50%;background:#fff;color:var(--brand);
+  display:flex;align-items:center;justify-content:center;border:3px solid var(--brand-3);
+}
+.prof-av .edit i{font-size:14px;}
+.prof-hero h2{font-family:'IBM Plex Sans',sans-serif;font-weight:800;font-size:22px;margin-bottom:4px;letter-spacing:-.3px;}
+.prof-hero .role{font-size:12.5px;color:rgba(255,255,255,.7);margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:6px;}
+.prof-hero .role i{color:var(--acc);font-size:14px;}
+.pbadges{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;}
+.pb2{
+  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.12);
+  border-radius:99px;padding:6px 12px;font-size:12px;color:#fff;
+  display:inline-flex;align-items:center;gap:5px;
+}
+.pb2 i{font-size:14px;color:var(--acc);}
+
+.menu-group{padding:16px;}
+.menu-group h4{
+  font-size:11px;font-weight:700;color:var(--mut);
+  text-transform:uppercase;letter-spacing:.7px;
+  margin-bottom:10px;padding-left:4px;
+}
+.menu-list{background:#fff;border:1px solid var(--bdr-2);border-radius:14px;overflow:hidden;}
+.mi{
+  display:flex;align-items:center;gap:12px;padding:14px;
+  border-bottom:1px solid var(--bdr-2);background:none;border-left:none;border-right:none;border-top:none;
+  width:100%;text-align:left;
+}
+.mi:last-child{border-bottom:none;}
+.mi:active{background:var(--bg);}
+.mi-ico{
+  width:38px;height:38px;border-radius:11px;background:var(--bg-2);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.mi-ico i{font-size:18px;color:var(--brand);}
+.mi-ico.admin{background:linear-gradient(135deg,var(--brand),var(--brand-2));}
+.mi-ico.admin i{color:#fff;}
+.mi-txt{flex:1;}
+.mi-txt p{font-size:14px;font-weight:500;color:var(--txt);}
+.mi-txt span{font-size:11.5px;color:var(--mut);display:block;margin-top:2px;}
+.mi-arr{color:var(--mut-2);font-size:18px;}
+
+.toggle{
+  width:42px;height:24px;background:var(--bdr);border-radius:99px;position:relative;
+  transition:background .2s ease;flex-shrink:0;
+}
+.toggle.on{background:var(--grn);}
+.toggle::after{
+  content:"";position:absolute;top:2px;left:2px;width:20px;height:20px;
+  background:#fff;border-radius:50%;transition:left .2s ease;
+  box-shadow:0 2px 4px rgba(0,0,0,.15);
+}
+.toggle.on::after{left:20px;}
+
+.btn-logout{
+  display:block;width:100%;background:#fff;border:1px solid rgba(163,45,45,.25);
+  border-radius:14px;padding:14px;color:var(--red);
+  font-weight:700;font-size:14px;margin:8px 0 16px;
+}
+
+/* ─── Bottom sheet (Filter / Sort) ─── */
+.sheet-backdrop{
+  position:fixed;inset:0;background:rgba(13,27,46,.5);
+  display:none;z-index:100;animation:fade .2s ease;
+}
+.sheet-backdrop.on{display:block;}
+@keyframes fade{from{opacity:0;}to{opacity:1;}}
+.sheet{
+  position:fixed;left:50%;transform:translateX(-50%);bottom:0;z-index:101;
+  width:100%;max-width:560px;
+  background:#fff;border-radius:24px 24px 0 0;
+  padding:6px 20px 24px;display:none;
+  animation:slideUp .25s ease;max-height:80vh;overflow-y:auto;
+}
+.sheet.on{display:block;}
+@keyframes slideUp{from{transform:translateY(100%);}to{transform:none;}}
+.sheet-grab{width:40px;height:4px;background:var(--bdr);border-radius:99px;margin:8px auto 16px;}
+.sheet h3{font-family:'IBM Plex Sans',sans-serif;font-weight:800;font-size:18px;margin-bottom:4px;}
+.sheet > p{font-size:12.5px;color:var(--mut);margin-bottom:18px;}
+.filter-grp{margin-bottom:18px;}
+.filter-grp h4{font-size:13px;font-weight:700;color:var(--txt);margin-bottom:10px;}
+.chip-row{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{
+  height:36px;padding:0 14px;border-radius:99px;
+  background:var(--bg);border:1px solid var(--bdr);
+  font-size:12.5px;font-weight:500;color:var(--txt-2);
+  display:inline-flex;align-items:center;gap:5px;
+}
+.chip.on{background:var(--brand);color:#fff;border-color:var(--brand);}
+.chip i{font-size:14px;}
+.range-row{display:flex;align-items:center;gap:10px;margin-top:8px;}
+.range-input{
+  flex:1;background:var(--bg);border:1px solid var(--bdr);border-radius:10px;
+  padding:10px 12px;font-size:13px;color:var(--txt);
+}
+.sheet .btn-full{margin-top:10px;}
+
+/* Helpers */
+.divider{height:1px;background:var(--bdr-2);margin:18px 0;}
+.spacer{height:24px;}
+
+/* ─── Chat (cours + chatbot) ─── */
+.chat-window{display:flex;flex-direction:column;gap:14px;margin-bottom:16px;}
+.chat-msg{display:flex;gap:8px;align-items:flex-end;}
+.chat-msg.user{flex-direction:row-reverse;}
+.chat-av{
+  width:30px;height:30px;border-radius:8px;
+  background:var(--ai-bg);color:var(--ai);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-size:15px;
+}
+.chat-bubble{
+  max-width:85%;padding:10px 13px;border-radius:12px;
+  font-size:13px;line-height:1.55;color:var(--txt);
+  background:var(--bg-2);border:1px solid var(--bdr-2);
+}
+.chat-msg.user .chat-bubble{
+  background:var(--brand);color:#fff;border-color:transparent;
+  border-bottom-right-radius:3px;
+}
+.chat-msg.assistant .chat-bubble{border-bottom-left-radius:3px;}
+.chat-input-row{
+  position:sticky;bottom:96px;background:#fff;
+  padding:10px 0;border-top:1px solid var(--bdr-2);
+}
+.chat-input-box{
+  display:flex;align-items:center;gap:8px;
+  background:var(--bg);border:1px solid var(--bdr);
+  border-radius:var(--r);padding:0 6px 0 14px;height:44px;
+}
+.chat-input-box input{
+  flex:1;border:none;background:none;
+  font-size:14px;color:var(--txt);outline:none;
+}
+.chat-input-box button{
+  width:32px;height:32px;border-radius:8px;
+  background:var(--brand);border:none;color:#fff;
+  display:flex;align-items:center;justify-content:center;
+}
+.chat-input-box button i{font-size:16px;}
+
+/* ─── Quiz ─── */
+.quiz-opt{
+  background:#fff;border:1.5px solid var(--bdr);
+  border-radius:var(--r);padding:13px;
+  display:flex;align-items:center;gap:12px;
+  text-align:left;cursor:pointer;width:100%;
+  transition:border-color .15s ease,background .15s ease;
+}
+.quiz-opt:hover{border-color:var(--brand-2);}
+.quiz-opt:active{transform:scale(.99);}
+.quiz-opt.selected-wrong{border-color:var(--red);background:var(--red-bg);pointer-events:none;}
+.quiz-opt.selected-right,.quiz-opt.reveal-right{border-color:var(--grn);background:var(--grn-bg);pointer-events:none;}
+.quiz-opt.disabled{pointer-events:none;opacity:.45;}
+.opt-letter{
+  width:30px;height:30px;border-radius:8px;
+  background:var(--bg-2);color:var(--brand);
+  font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:13px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.quiz-opt.selected-wrong .opt-letter{background:var(--red);color:#fff;}
+.quiz-opt.selected-right .opt-letter,
+.quiz-opt.reveal-right .opt-letter{background:var(--grn);color:#fff;}
+.opt-text{flex:1;font-size:14px;color:var(--txt);line-height:1.35;}
+</style>
+</head>
+<body>
+
+<div class="app" id="app">
+
+  <!-- ═══════════ HOME ═══════════ -->
+  <div class="page on" id="p-home" data-screen-label="01 Accueil">
+    <div class="appbar">
+      <div class="appbar-row">
+        <div class="logo">DIGIT<span>A</span>LES</div>
+        <button class="icon-btn" aria-label="Notifications"><i class="ti ti-bell"></i><span class="dot"></span></button>
+        <button class="icon-btn" onclick="go('p-profile')" aria-label="Profil"><i class="ti ti-user"></i></button>
+      </div>
+    </div>
+    <div class="hero">
+      <div class="hero-tag">4 universités partenaires · Afrique de l'Ouest et Centrale</div>
+      <h1>Accédez aux <em>savoirs universitaires</em> africains</h1>
+      <p>Contenus transformés depuis les universités partenaires, accessibles à tous les apprenants africains.</p>
+      <div class="hero-stats">
+        <div class="hs"><strong>4</strong><span>Univ.</span></div>
+        <div class="hs"><strong>1 140</strong><span>Apprenants</span></div>
+        <div class="hs"><strong>4.7 / 5</strong><span>Note moyenne</span></div>
+      </div>
+      <button class="btn btn-primary btn-full" onclick="document.querySelector('.search-wrap').scrollIntoView({behavior:'smooth'})">
+        Voir le catalogue
+      </button>
+    </div>
+
+    <!-- Universités partenaires -->
+    <div style="background:#fff;border-bottom:1px solid var(--bdr-2);padding:12px 16px;">
+      <div style="font-size:11px;font-weight:600;color:var(--mut);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">Universités partenaires</div>
+      <div style="display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;">
+        <div style="flex-shrink:0;display:flex;align-items:center;gap:8px;background:var(--bg-2);border:1px solid var(--bdr);border-radius:8px;padding:6px 12px 6px 8px;white-space:nowrap;">
+          <div style="width:26px;height:26px;border-radius:6px;background:var(--brand);color:#fff;font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:10px;display:flex;align-items:center;justify-content:center;">UO</div>
+          <span style="font-size:12px;font-weight:500;color:var(--txt-2);">Univ. Ouagadougou</span>
+        </div>
+        <div style="flex-shrink:0;display:flex;align-items:center;gap:8px;background:var(--bg-2);border:1px solid var(--bdr);border-radius:8px;padding:6px 12px 6px 8px;white-space:nowrap;">
+          <div style="width:26px;height:26px;border-radius:6px;background:var(--grn);color:#fff;font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:10px;display:flex;align-items:center;justify-content:center;">CS</div>
+          <span style="font-size:12px;font-weight:500;color:var(--txt-2);">CESAG Dakar</span>
+        </div>
+        <div style="flex-shrink:0;display:flex;align-items:center;gap:8px;background:var(--bg-2);border:1px solid var(--bdr);border-radius:8px;padding:6px 12px 6px 8px;white-space:nowrap;">
+          <div style="width:26px;height:26px;border-radius:6px;background:#4C1D95;color:#fff;font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:10px;display:flex;align-items:center;justify-content:center;">IS</div>
+          <span style="font-size:12px;font-weight:500;color:var(--txt-2);">ISTIC Cameroun</span>
+        </div>
+        <div style="flex-shrink:0;display:flex;align-items:center;gap:8px;background:var(--bg-2);border:1px solid var(--bdr);border-radius:8px;padding:6px 12px 6px 8px;white-space:nowrap;">
+          <div style="width:26px;height:26px;border-radius:6px;background:#92400E;color:#fff;font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:10px;display:flex;align-items:center;justify-content:center;">UA</div>
+          <span style="font-size:12px;font-weight:500;color:var(--txt-2);">Univ. Abomey-Calavi</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-wrap">
+      <div class="search-row">
+        <div class="sbox"><i class="ti ti-search"></i><input placeholder="Rechercher une formation…"/></div>
+        <button class="filter-btn" onclick="openSheet()" aria-label="Filtres"><i class="ti ti-adjustments-horizontal"></i><span class="bdg">2</span></button>
+      </div>
+      <div class="cats" id="cats">
+        <button class="cat on" onclick="setCat(this)"><i class="ti ti-layout-grid"></i> Tous</button>
+        <button class="cat" onclick="setCat(this)"><i class="ti ti-network"></i> Internet</button>
+        <button class="cat" onclick="setCat(this)"><i class="ti ti-shield"></i> Souveraineté</button>
+        <button class="cat" onclick="setCat(this)"><i class="ti ti-database"></i> Données</button>
+        <button class="cat" onclick="setCat(this)"><i class="ti ti-brain"></i> IA</button>
+        <button class="cat" onclick="setCat(this)"><i class="ti ti-map"></i> Feuille de route</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-hd">
+        <h2>Formations à la une</h2>
+        <a class="see-all" href="#">Tout voir <i class="ti ti-chevron-right"></i></a>
+      </div>
+      <div class="courses">
+        <article class="ccard" onclick="go('p-course')">
+          <div class="cthumb blue">
+            <div class="thumb-ico"><i class="ti ti-network"></i></div>
+            <div class="cbadge">Certifiant</div>
+          </div>
+          <div class="cbody">
+            <div class="ctag">Gouvernance Internet</div>
+            <div style="font-size:11px;color:var(--mut);margin-top:-4px;margin-bottom:4px;display:flex;align-items:center;gap:4px;"><i class="ti ti-building-community" style="font-size:12px;"></i> Univ. de Ouagadougou</div>
+            <div class="ctitle">Fondamentaux de la gouvernance de l'Internet en Afrique</div>
+            <div class="cmeta">
+              <span><i class="ti ti-clock"></i> 4h30</span>
+              <span><i class="ti ti-file-text"></i> 6 modules</span>
+              <span><i class="ti ti-users"></i> 42 inscrits</span>
+            </div>
+            <div class="cfoot">
+              <div class="cprice">25 000<sub> FCFA</sub></div>
+              <button class="btn btn-dark btn-sm" onclick="event.stopPropagation();go('p-course')">S'inscrire</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="ccard" onclick="go('p-course')">
+          <div class="cthumb purple">
+            <div class="thumb-ico"><i class="ti ti-brain"></i></div>
+            <div class="cbadge">Certifiant</div>
+          </div>
+          <div class="cbody">
+            <div class="ctag">IA Responsable</div>
+            <div style="font-size:11px;color:var(--mut);margin-top:-4px;margin-bottom:4px;display:flex;align-items:center;gap:4px;"><i class="ti ti-building-community" style="font-size:12px;"></i> CESAG Dakar</div>
+            <div class="ctitle">Introduction à l'IA responsable pour décideurs</div>
+            <div class="cmeta">
+              <span><i class="ti ti-clock"></i> 2h15</span>
+              <span><i class="ti ti-file-text"></i> 4 modules</span>
+              <span><i class="ti ti-users"></i> 28 inscrits</span>
+            </div>
+            <div class="cfoot">
+              <div class="cprice"><span class="strike">22 000</span>18 000<sub> FCFA</sub></div>
+              <button class="btn btn-dark btn-sm" onclick="event.stopPropagation();go('p-course')">S'inscrire</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="ccard" onclick="go('p-course')">
+          <div class="cthumb teal">
+            <div class="thumb-ico"><i class="ti ti-database"></i></div>
+            <div class="cbadge">Certifiant</div>
+          </div>
+          <div class="cbody">
+            <div class="ctag">Données</div>
+            <div style="font-size:11px;color:var(--mut);margin-top:-4px;margin-bottom:4px;display:flex;align-items:center;gap:4px;"><i class="ti ti-building-community" style="font-size:12px;"></i> CESAG Dakar</div>
+            <div class="ctitle">Gouvernance et protection des données personnelles</div>
+            <div class="cmeta">
+              <span><i class="ti ti-clock"></i> 3h00</span>
+              <span><i class="ti ti-file-text"></i> 5 modules</span>
+              <span><i class="ti ti-users"></i> 31 inscrits</span>
+            </div>
+            <div class="cfoot">
+              <div class="cprice">20 000<sub> FCFA</sub></div>
+              <button class="btn btn-dark btn-sm" onclick="event.stopPropagation();go('p-course')">S'inscrire</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="ccard" onclick="go('p-course')">
+          <div class="cthumb orange">
+            <div class="thumb-ico"><i class="ti ti-shield"></i></div>
+            <div class="cbadge">Certifiant</div>
+          </div>
+          <div class="cbody">
+            <div class="ctag">Souveraineté</div>
+            <div style="font-size:11px;color:var(--mut);margin-top:-4px;margin-bottom:4px;display:flex;align-items:center;gap:4px;"><i class="ti ti-building-community" style="font-size:12px;"></i> ISTIC Cameroun</div>
+            <div class="ctitle">Souveraineté numérique et infrastructures critiques</div>
+            <div class="cmeta">
+              <span><i class="ti ti-clock"></i> 3h30</span>
+              <span><i class="ti ti-file-text"></i> 5 modules</span>
+              <span><i class="ti ti-users"></i> 19 inscrits</span>
+            </div>
+            <div class="cfoot">
+              <div class="cprice">22 000<sub> FCFA</sub></div>
+              <button class="btn btn-dark btn-sm" onclick="event.stopPropagation();go('p-course')">S'inscrire</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="ccard" onclick="go('p-course')">
+          <div class="cthumb red">
+            <div class="thumb-ico"><i class="ti ti-lock-open"></i></div>
+            <div class="cbadge sponsored"><i class="ti ti-gift" style="font-size:11px;"></i> Sponsorisé</div>
+          </div>
+          <div class="cbody">
+            <div class="ctag">Cybersécurité</div>
+            <div style="font-size:11px;color:var(--mut);margin-top:-4px;margin-bottom:4px;display:flex;align-items:center;gap:4px;"><i class="ti ti-building-community" style="font-size:12px;"></i> ISTIC Cameroun · Financé par UEMOA</div>
+            <div class="ctitle">Cybersécurité pour professionnels</div>
+            <div class="cmeta">
+              <span><i class="ti ti-clock"></i> 4h00</span>
+              <span><i class="ti ti-file-text"></i> 6 modules</span>
+              <span><i class="ti ti-users"></i> 67 inscrits</span>
+            </div>
+            <div class="cfoot">
+              <div>
+                <span style="font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:17px;color:var(--grn);">Gratuit</span>
+                <span style="font-size:11px;color:var(--mut);text-decoration:line-through;margin-left:6px;">30 000 FCFA</span>
+              </div>
+              <button class="btn btn-dark btn-sm" onclick="event.stopPropagation();go('p-course')">S'inscrire</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="promo">
+        <span class="badge-promo"><i class="ti ti-discount" style="font-size:13px;"></i> Réduction de 25%</span>
+        <h3>5 formations · 1 parcours certifiant</h3>
+        <p>Explorez l'ensemble de l'écosystème de la gouvernance numérique africaine.</p>
+        <div class="row">
+          <button class="btn btn-primary">Voir l'offre</button>
+        </div>
+      </div>
+
+      <div class="section" style="padding:24px 0 0;">
+        <div class="sec-hd">
+          <h2>Paiement sécurisé</h2>
+        </div>
+        <div class="pay-options">
+          <div class="pay om"><i class="ti ti-device-mobile"></i> Orange Money</div>
+          <div class="pay mtn"><i class="ti ti-device-mobile"></i> MTN MoMo</div>
+          <div class="pay wave"><i class="ti ti-wave-sine"></i> Wave</div>
+          <div class="pay cb"><i class="ti ti-credit-card"></i> Carte bancaire</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+    <!-- Bottom nav home -->
+    <nav class="bottom-nav">
+      <button class="bn-btn on"><i class="ti ti-home-2"></i><span>Accueil</span></button>
+      <button class="bn-btn"><i class="ti ti-search"></i><span>Catalogue</span></button>
+      <button class="bn-btn" onclick="go('p-apprenant')"><i class="ti ti-books"></i><span>Mes cours</span></button>
+      <button class="bn-btn" onclick="go('p-chatbot')"><i class="ti ti-sparkles"></i><span>Assistant</span></button>
+      <button class="bn-btn" onclick="go('p-profile')"><i class="ti ti-user"></i><span>Profil</span></button>
+    </nav>
+
+    <!-- Filter bottom sheet -->
+    <div class="sheet-backdrop" id="sheet-bd" onclick="closeSheet()"></div>
+    <div class="sheet" id="sheet">
+      <div class="sheet-grab"></div>
+      <h3>Filtrer le catalogue</h3>
+      <p>Affinez votre sélection</p>
+      <div class="filter-grp">
+        <h4>Niveau</h4>
+        <div class="chip-row">
+          <button class="chip on">Tous</button>
+          <button class="chip">Débutant</button>
+          <button class="chip">Intermédiaire</button>
+          <button class="chip">Avancé</button>
+        </div>
+      </div>
+      <div class="filter-grp">
+        <h4>Durée</h4>
+        <div class="chip-row">
+          <button class="chip">&lt; 2h</button>
+          <button class="chip on">2–4h</button>
+          <button class="chip">4h+</button>
+        </div>
+      </div>
+      <div class="filter-grp">
+        <h4>Prix (FCFA)</h4>
+        <div class="range-row">
+          <input class="range-input" value="0" placeholder="Min"/>
+          <input class="range-input" value="30 000" placeholder="Max"/>
+        </div>
+      </div>
+      <div class="filter-grp">
+        <h4>Options</h4>
+        <div class="chip-row">
+          <button class="chip on"><i class="ti ti-certificate"></i> Certifiant</button>
+          <button class="chip"><i class="ti ti-gift"></i> Gratuit</button>
+        </div>
+      </div>
+      <div class="filter-grp">
+        <h4>Universit�� source</h4>
+        <div class="chip-row">
+          <button class="chip on" onclick="this.parentElement.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));this.classList.add('on')">Toutes</button>
+          <button class="chip" onclick="this.parentElement.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));this.classList.add('on')">Univ. Ouagadougou</button>
+          <button class="chip" onclick="this.parentElement.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));this.classList.add('on')">CESAG Dakar</button>
+          <button class="chip" onclick="this.parentElement.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));this.classList.add('on')">ISTIC Cameroun</button>
+          <button class="chip" onclick="this.parentElement.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));this.classList.add('on')">Univ. Abomey-Calavi</button>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-full" onclick="closeSheet()">Voir les formations</button>
+    </div>
+  </div>
+
+  <!-- ═══════════ COURSE DETAIL ═══════════ -->
+  <div class="page" id="p-course" data-screen-label="02 Cours">
+    <div class="appbar">
+      <div class="appbar-row">
+        <button class="icon-btn" onclick="go('p-home')" aria-label="Retour"><i class="ti ti-arrow-left"></i></button>
+        <div class="logo" style="text-align:center;font-size:14px;">Détail du cours</div>
+        <button class="icon-btn" aria-label="Partager"><i class="ti ti-share-2"></i></button>
+        <button class="icon-btn" aria-label="Favoris"><i class="ti ti-bookmark"></i></button>
+      </div>
+    </div>
+    <div class="cd-hero">
+      <span class="cd-tag"><i class="ti ti-building-community"></i> Univ. de Ouagadougou · Gouvernance Internet</span>
+      <h1>Fondamentaux de la gouvernance de l'Internet en Afrique</h1>
+      <p>Comprendre les mécanismes, acteurs et enjeux pour les décideurs africains.</p>
+      <div class="cd-meta">
+        <span><i class="ti ti-clock"></i> 4h30</span>
+        <span><i class="ti ti-file-text"></i> 6 modules</span>
+        <span><i class="ti ti-language"></i> Français</span>
+        <span><i class="ti ti-certificate"></i> Certifiant</span>
+      </div>
+      <div class="rating"><div class="stars">★★★★★</div><span class="rt">4.8</span><span class="rn">(18 avis · 42 inscrits)</span></div>
+    </div>
+
+    <div class="buy-bar">
+      <div class="pb">
+        <div class="pbig">25 000<sub> FCFA</sub></div>
+        <div class="ptag"><i class="ti ti-shield-check"></i> Accès à vie · Remboursement 7 jours</div>
+      </div>
+      <button class="btn btn-primary btn-buy" onclick="go('p-apprenant')">S'inscrire à ce cours</button>
+    </div>
+
+    <div class="tabs">
+      <button class="tab on" onclick="setTab(this,'tab-aper')">Aperçu</button>
+      <button class="tab" onclick="setTab(this,'tab-prog')">Programme</button>
+      <button class="tab" onclick="setTab(this,'tab-avis')">Avis</button>
+      <button class="tab" onclick="setTab(this,'tab-ia')"><i class="ti ti-sparkles" style="font-size:14px;vertical-align:-2px;"></i> Assistant</button>
+    </div>
+
+    <!-- Tab 1: Aperçu -->
+    <div class="tab-content on" id="tab-aper">
+      <div class="about-h">À propos de ce cours</div>
+      <p class="about-p">Ce parcours offre une vision claire de l'écosystème Internet et de ses mécanismes de gouvernance, en mettant l'accent sur les enjeux spécifiques au continent africain. Idéal pour décideurs, régulateurs et cadres techniques.</p>
+
+      <div class="about-h">Vous apprendrez à</div>
+      <div class="objectives">
+        <div class="obj"><i class="ti ti-target"></i><p>Identifier les acteurs clés de la gouvernance (ICANN, RIR, AFRINIC, IGF)</p></div>
+        <div class="obj"><i class="ti ti-target"></i><p>Analyser la résilience des infrastructures Internet africaines</p></div>
+        <div class="obj"><i class="ti ti-target"></i><p>Formuler une stratégie de gouvernance pour votre organisation</p></div>
+      </div>
+
+      <div class="about-h">Ce cours comprend</div>
+      <div class="inc-grid">
+        <div class="inc-item"><i class="ti ti-video"></i><div><div class="it">12 vidéos HD</div><div class="iv">2h45 cumulées</div></div></div>
+        <div class="inc-item"><i class="ti ti-file-text"></i><div><div class="it">6 fiches mémo</div><div class="iv">PDF imprimables</div></div></div>
+        <div class="inc-item"><i class="ti ti-checklist"></i><div><div class="it">Quiz par module</div><div class="iv">Avec corrigés</div></div></div>
+        <div class="inc-item"><i class="ti ti-certificate"></i><div><div class="it">Certificat PDF</div><div class="iv">QR vérifiable</div></div></div>
+        <div class="inc-item"><i class="ti ti-device-mobile"></i><div><div class="it">Mobile & desktop</div><div class="iv">Accès à vie</div></div></div>
+        <div class="inc-item"><i class="ti ti-rosette"></i><div><div class="it">Attestation co-signée</div><div class="iv">Université partenaire</div></div></div>
+      </div>
+
+      <div class="about-h">Votre formateur</div>
+      <div class="inst-box">
+        <div class="iav">DS</div>
+        <div class="iinfo">
+          <p>Dr. Dramane Sanou</p>
+          <span>Expert gouvernance numérique · DIGITALES SARL</span>
+          <a class="lk" href="#">Voir le profil <i class="ti ti-chevron-right" style="font-size:14px;"></i></a>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:12px;align-items:flex-start;background:#EFF6FF;border:1px solid rgba(30,58,95,.12);border-radius:var(--r);padding:14px;margin-bottom:14px;">
+        <i class="ti ti-school" style="font-size:22px;color:var(--brand-2);flex-shrink:0;margin-top:2px;"></i>
+        <div>
+          <strong style="display:block;font-size:13px;font-weight:600;color:var(--brand);margin-bottom:4px;">Validation académique</strong>
+          <p style="font-size:12px;color:var(--txt-2);line-height:1.55;">Ce contenu est produit et validé par l'Université de Ouagadougou. L'attestation DIGITALES Academy est co-signée. La certification officielle relève de la responsabilité de l'université partenaire.</p>
+        </div>
+      </div>
+      <div class="gbox">
+        <i class="ti ti-shield-check"></i>
+        <div><strong>Accès garanti 7 jours</strong><p>Premier module accessible sans paiement. Remboursement intégral sous 7 jours.</p></div>
+      </div>
+    </div>
+
+    <!-- Tab 2: Programme -->
+    <div class="tab-content" id="tab-prog">
+      <div class="curriculum-info">
+        <span><b>6</b> modules · <b>12</b> leçons</span>
+        <span><b>4h30</b> au total</span>
+      </div>
+      <div class="modules">
+        <div class="mod open">
+          <button class="mod-h" onclick="toggleMod(this)">
+            <div class="mnum done"><i class="ti ti-check"></i></div>
+            <div class="mt">
+              <div class="mn">Introduction à l'écosystème Internet</div>
+              <div class="mv"><span><i class="ti ti-clock"></i> 45 min</span><span><i class="ti ti-file-text"></i> 3 leçons</span></div>
+            </div>
+            <i class="ti ti-chevron-right caret"></i>
+          </button>
+          <div class="mod-body">
+            <div class="lesson"><i class="ti ti-player-play"></i><span class="ln">Histoire et structure d'Internet</span><span class="ftag">Gratuit</span></div>
+            <div class="lesson"><i class="ti ti-file-text"></i><span class="ln">Fiche mémo : acteurs clés</span></div>
+            <div class="lesson" onclick="go('p-quiz')" style="cursor:pointer;"><i class="ti ti-checkbox"></i><span class="ln">Quiz de validation</span><span style="font-size:10px;font-weight:600;padding:2px 6px;border-radius:4px;background:var(--ai-bg);color:var(--ai);display:inline-flex;align-items:center;gap:3px;"><i class="ti ti-sparkles" style="font-size:11px;"></i> IA</span></div>
+          </div>
+        </div>
+        <div class="mod">
+          <button class="mod-h" onclick="toggleMod(this)">
+            <div class="mnum">2</div>
+            <div class="mt">
+              <div class="mn">DNS, root servers et ICANN</div>
+              <div class="mv"><span><i class="ti ti-clock"></i> 50 min</span><span><i class="ti ti-lock"></i> Verrouillé</span></div>
+            </div>
+            <i class="ti ti-chevron-right caret"></i>
+          </button>
+        </div>
+        <div class="mod">
+          <button class="mod-h" onclick="toggleMod(this)">
+            <div class="mnum">3</div>
+            <div class="mt">
+              <div class="mn">RIR, AFRINIC et ccTLD Afrique</div>
+              <div class="mv"><span><i class="ti ti-clock"></i> 40 min</span><span><i class="ti ti-lock"></i> Verrouillé</span></div>
+            </div>
+            <i class="ti ti-chevron-right caret"></i>
+          </button>
+        </div>
+        <div class="mod">
+          <button class="mod-h" onclick="toggleMod(this)">
+            <div class="mnum">4</div>
+            <div class="mt">
+              <div class="mn">Routage BGP et résilience</div>
+              <div class="mv"><span><i class="ti ti-clock"></i> 45 min</span><span><i class="ti ti-lock"></i> Verrouillé</span></div>
+            </div>
+            <i class="ti ti-chevron-right caret"></i>
+          </button>
+        </div>
+        <div class="mod">
+          <button class="mod-h" onclick="toggleMod(this)">
+            <div class="mnum">5</div>
+            <div class="mt">
+              <div class="mn">Enjeux politiques et forums (IGF)</div>
+              <div class="mv"><span><i class="ti ti-clock"></i> 40 min</span><span><i class="ti ti-lock"></i> Verrouillé</span></div>
+            </div>
+            <i class="ti ti-chevron-right caret"></i>
+          </button>
+        </div>
+        <div class="mod">
+          <button class="mod-h" onclick="toggleMod(this)">
+            <div class="mnum">6</div>
+            <div class="mt">
+              <div class="mn">Cas pratique : Burkina Faso</div>
+              <div class="mv"><span><i class="ti ti-clock"></i> 50 min</span><span><i class="ti ti-lock"></i> Verrouillé</span></div>
+            </div>
+            <i class="ti ti-chevron-right caret"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 3: Avis -->
+    <div class="tab-content" id="tab-avis">
+      <div class="rev-summary">
+        <div class="rev-score">
+          <div class="big">4.8</div>
+          <div class="stars">★★★★★</div>
+          <div class="nb">18 avis</div>
+        </div>
+        <div class="rev-bars">
+          <div class="rev-bar"><span class="lab">5★</span><div class="bar"><div style="width:78%"></div></div><span class="num">14</span></div>
+          <div class="rev-bar"><span class="lab">4★</span><div class="bar"><div style="width:18%"></div></div><span class="num">3</span></div>
+          <div class="rev-bar"><span class="lab">3★</span><div class="bar"><div style="width:5%"></div></div><span class="num">1</span></div>
+          <div class="rev-bar"><span class="lab">2★</span><div class="bar"><div style="width:0%"></div></div><span class="num">0</span></div>
+          <div class="rev-bar"><span class="lab">1★</span><div class="bar"><div style="width:0%"></div></div><span class="num">0</span></div>
+        </div>
+      </div>
+      <div class="rev">
+        <div class="rh">
+          <div class="rav" style="background:linear-gradient(135deg,#1D9E75,#0F6E56);">AK</div>
+          <div class="ri"><div class="rn">Aminata Koné</div><div class="rd">Cadre · Mars 2026</div></div>
+          <div class="rs">★★★★★</div>
+        </div>
+        <p class="rt">Contenu très clair et bien structuré. Le cas pratique Burkina Faso est particulièrement utile pour contextualiser les enjeux.</p>
+      </div>
+      <div class="rev">
+        <div class="rh">
+          <div class="rav" style="background:linear-gradient(135deg,#F4A623,#C24B1A);">MB</div>
+          <div class="ri"><div class="rn">Moussa Barro</div><div class="rd">Régulateur · Fév. 2026</div></div>
+          <div class="rs">★★★★★</div>
+        </div>
+        <p class="rt">Excellent pour un décideur qui veut comprendre rapidement les enjeux sans background technique.</p>
+      </div>
+      <div class="rev">
+        <div class="rh">
+          <div class="rav" style="background:linear-gradient(135deg,#7F77DD,#534AB7);">SO</div>
+          <div class="ri"><div class="rn">Salimata Ouédraogo</div><div class="rd">Consultante · Jan. 2026</div></div>
+          <div class="rs">★★★★☆</div>
+        </div>
+        <p class="rt">Très bon parcours, j'aurais apprécié plus de cas pratiques. Le module sur AFRINIC est excellent.</p>
+      </div>
+    </div>
+
+    <!-- Tab IA assistant -->
+    <div class="tab-content" id="tab-ia">
+      <div style="display:flex;align-items:center;gap:8px;background:var(--ai-bg);border:1px solid rgba(91,33,182,.1);border-radius:var(--r);padding:12px 14px;margin-bottom:18px;">
+        <i class="ti ti-sparkles" style="font-size:16px;color:var(--ai);flex-shrink:0;"></i>
+        <div>
+          <div style="font-size:12.5px;font-weight:600;color:var(--ai-dk);">Assistant pédagogique</div>
+          <div style="font-size:11.5px;color:var(--ai);margin-top:2px;">Répond uniquement à partir du contenu de ce cours</div>
+        </div>
+      </div>
+      <div class="chat-window" id="chat-window">
+        <div class="chat-msg assistant">
+          <div class="chat-av"><i class="ti ti-sparkles"></i></div>
+          <div class="chat-bubble">Bonjour. Je peux répondre à vos questions sur ce cours. Que souhaitez-vous approfondir ?</div>
+        </div>
+        <div class="chat-msg user">
+          <div class="chat-bubble">Quelle est la différence entre ICANN et AFRINIC ?</div>
+        </div>
+        <div class="chat-msg assistant">
+          <div class="chat-av"><i class="ti ti-sparkles"></i></div>
+          <div class="chat-bubble"><strong>ICANN</strong> coordonne les identifiants Internet à l'échelle mondiale : noms de domaine, adresses IP et protocoles. Il opère depuis Los Angeles.<br><br><strong>AFRINIC</strong> est le Registre Régional Internet pour l'Afrique. Son rôle est d'allouer et gérer les blocs d'adresses IP spécifiquement pour le continent africain — en tant que l'un des 5 RIR mondiaux sous l'autorité de l'ICANN.<br><br><span style="font-size:11px;color:var(--mut);">Source : Module 2 — DNS et ICANN</span></div>
+        </div>
+        <div class="chat-msg user">
+          <div class="chat-bubble">Et le rôle du ccTLD ?</div>
+        </div>
+        <div class="chat-msg assistant">
+          <div class="chat-av"><i class="ti ti-sparkles"></i></div>
+          <div class="chat-bubble">Le <strong>ccTLD</strong> (country code Top-Level Domain) est l'extension nationale d'un pays : <strong>.bf</strong> pour le Burkina Faso, <strong>.sn</strong> pour le Sénégal. Sa gestion relève de chaque État. C'est un enjeu de souveraineté numérique abordé au module 3.<br><br><span style="font-size:11px;color:var(--mut);">Source : Module 3 — RIR et ccTLD</span></div>
+        </div>
+      </div>
+      <div class="chat-input-row">
+        <div class="chat-input-box">
+          <input type="text" id="chat-input" placeholder="Posez une question sur ce cours…"/>
+          <button onclick="sendChatMsg()" aria-label="Envoyer"><i class="ti ti-send"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <nav class="bottom-nav">
+      <button class="bn-btn" onclick="go('p-home')"><i class="ti ti-home-2"></i><span>Accueil</span></button>
+      <button class="bn-btn on"><i class="ti ti-search"></i><span>Catalogue</span></button>
+      <button class="bn-btn" onclick="go('p-apprenant')"><i class="ti ti-books"></i><span>Mes cours</span></button>
+      <button class="bn-btn" onclick="go('p-chatbot')"><i class="ti ti-sparkles"></i><span>Assistant</span></button>
+      <button class="bn-btn" onclick="go('p-profile')"><i class="ti ti-user"></i><span>Profil</span></button>
+    </nav>
+  </div>
+
+  <!-- ═══════════ APPRENANT ═══════════ -->
+  <div class="page" id="p-apprenant" data-screen-label="03 Apprenant">
+    <div class="appbar">
+      <div class="appbar-row">
+        <div class="logo">Mon espace</div>
+        <button class="icon-btn" aria-label="Notifications"><i class="ti ti-bell"></i><span class="dot"></span></button>
+        <button class="icon-btn" onclick="go('p-profile')" aria-label="Profil"><i class="ti ti-user"></i></button>
+      </div>
+    </div>
+    <div class="user-band">
+      <div class="welcome">
+        <div class="uav">AK</div>
+        <div class="wt">
+          <p>Bienvenue de retour</p>
+          <strong>Aminata Koné</strong>
+        </div>
+        <span class="streak"><i class="ti ti-flame"></i> 5j</span>
+      </div>
+      <div class="stat-row">
+        <div class="sb"><strong>3</strong><span>Cours suivis</span></div>
+        <div class="sb"><strong>68%</strong><span>Progression</span></div>
+        <div class="sb"><strong>1</strong><span>Certificat</span></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="continue-card">
+        <div class="label">Reprendre où vous étiez</div>
+        <h3>Fondamentaux de la gouvernance de l'Internet</h3>
+        <div class="progress-row">
+          <div class="continue-bar"><div style="width:83%"></div></div>
+          <div class="pct">83%</div>
+        </div>
+        <div class="next"><i class="ti ti-player-play"></i> Module 5 · Enjeux politiques et forums</div>
+        <button class="btn" onclick="go('p-course')">Continuer <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-hd">
+        <h2>Mes cours</h2>
+        <a class="see-all" href="#">Tout voir <i class="ti ti-chevron-right"></i></a>
+      </div>
+      <div class="cp">
+        <div class="cp-top">
+          <div class="cpico teal"><i class="ti ti-database"></i></div>
+          <div class="cpinfo"><div class="cptag">Données</div><div class="cptitle">Gouvernance et protection des données personnelles</div></div>
+          <div class="cppct">40%</div>
+        </div>
+        <div class="pb"><div class="pbf a" style="width:40%"></div></div>
+        <div class="cp-bot">
+          <div class="cpmeta"><span><i class="ti ti-book"></i> Module 2/5</span><span><i class="ti ti-clock"></i> 1h48 restants</span></div>
+          <button class="btn btn-dark btn-sm" onclick="go('p-course')">Continuer</button>
+        </div>
+      </div>
+      <div class="cp">
+        <div class="cp-top">
+          <div class="cpico purple"><i class="ti ti-brain"></i></div>
+          <div class="cpinfo"><div class="cptag">IA Responsable</div><div class="cptitle">Introduction à l'IA responsable pour décideurs</div></div>
+          <div class="cppct" style="color:var(--grn);">100%</div>
+        </div>
+        <div class="pb"><div class="pbf g" style="width:100%"></div></div>
+        <div class="cp-bot">
+          <div class="cpmeta"><span><i class="ti ti-check"></i> Terminé</span><span><i class="ti ti-star"></i> Score 91%</span></div>
+          <button class="btn btn-sm" style="background:var(--grn-bg);color:var(--grn-dk);">Revoir</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recommandations IA -->
+    <div class="section">
+      <div class="sec-hd">
+        <h2>Recommandé pour vous</h2>
+        <span style="font-size:11.5px;color:var(--ai);font-weight:600;display:inline-flex;align-items:center;gap:4px;"><i class="ti ti-sparkles" style="font-size:13px;"></i> IA</span>
+      </div>
+      <div class="cp" style="cursor:pointer;" onclick="go('p-course')">
+        <div class="cp-top">
+          <div class="cpico teal"><i class="ti ti-database"></i></div>
+          <div class="cpinfo">
+            <div class="cptag">Données · CESAG Dakar</div>
+            <div class="cptitle">Gouvernance et protection des données personnelles</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding-top:8px;border-top:1px solid var(--bdr-2);margin-top:4px;">
+          <span style="font-size:11.5px;color:var(--ai);display:inline-flex;align-items:center;gap:4px;"><i class="ti ti-sparkles" style="font-size:12px;"></i> Correspond à votre profil</span>
+          <span style="font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:14px;color:var(--brand);">20 000 FCFA</span>
+        </div>
+      </div>
+      <div class="cp" style="cursor:pointer;" onclick="go('p-course')">
+        <div class="cp-top">
+          <div class="cpico" style="background:#92400E;"><i class="ti ti-shield"></i></div>
+          <div class="cpinfo">
+            <div class="cptag">Souveraineté · ISTIC Cameroun</div>
+            <div class="cptitle">Souveraineté numérique et infrastructures critiques</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding-top:8px;border-top:1px solid var(--bdr-2);margin-top:4px;">
+          <span style="font-size:11.5px;color:var(--ai);display:inline-flex;align-items:center;gap:4px;"><i class="ti ti-sparkles" style="font-size:12px;"></i> Suite logique de votre parcours</span>
+          <span style="font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:14px;color:var(--brand);">22 000 FCFA</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-hd">
+        <h2>Mes attestations</h2>
+      </div>
+      <div class="cert-row">
+        <div class="cico">
+          <i class="ti ti-certificate"></i>
+          <div class="qr-mini"><i class="ti ti-qrcode"></i></div>
+        </div>
+        <div class="cinfo">
+          <div class="cn">Introduction à l'IA responsable</div>
+          <div class="cd2">Délivré le 12 mai 2026 · N° <b>DGTL-2026-0042</b> · Co-signé Univ. Ouagadougou</div>
+        </div>
+        <button class="btn-dl"><i class="ti ti-download"></i> PDF</button>
+      </div>
+      <div class="cert-row locked">
+        <div class="cico"><i class="ti ti-lock"></i></div>
+        <div class="cinfo">
+          <div class="cn" style="color:var(--mut);">Gouvernance de l'Internet</div>
+          <div class="cd2">Terminez le cours pour débloquer · <b>83%</b></div>
+        </div>
+        <button class="btn-dl"><i class="ti ti-lock"></i></button>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-hd">
+        <h2>Activité récente</h2>
+      </div>
+      <div class="act-list">
+        <div class="ai">
+          <div class="adot" style="background:var(--ai-bg);color:var(--ai);"><i class="ti ti-sparkles"></i></div>
+          <div class="atxt"><p><b>Quiz généré</b> · Module 3 — RIR et AFRINIC</p><span>Gouvernance Internet · Il y a 30 min</span></div>
+        </div>
+        <div class="ai">
+          <div class="adot g"><i class="ti ti-check"></i></div>
+          <div class="atxt"><p><b>Quiz module 4 réussi</b> · score 88%</p><span>Gouvernance Internet · il y a 2h</span></div>
+        </div>
+        <div class="ai">
+          <div class="adot b"><i class="ti ti-player-play"></i></div>
+          <div class="atxt"><p><b>Vidéo visionnée</b> · Routage BGP et résilience</p><span>Gouvernance Internet · Hier 14h32</span></div>
+        </div>
+        <div class="ai">
+          <div class="adot a"><i class="ti ti-download"></i></div>
+          <div class="atxt"><p><b>Fiche mémo téléchargée</b> · Acteurs clés Internet</p><span>Gouvernance Internet · Hier 11h15</span></div>
+        </div>
+        <div class="ai">
+          <div class="adot p"><i class="ti ti-certificate"></i></div>
+          <div class="atxt"><p><b>Certificat obtenu</b> · IA Responsable</p><span>12 mai 2026</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bouton flottant assistant IA -->
+    <button style="position:fixed;right:16px;bottom:106px;width:48px;height:48px;border-radius:12px;background:var(--ai);color:#fff;border:none;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(91,33,182,.35);z-index:40;font-size:20px;" onclick="go('p-chatbot')" aria-label="Assistant IA">
+      <i class="ti ti-sparkles"></i>
+    </button>
+
+    <div class="spacer"></div>
+    <nav class="bottom-nav">
+      <button class="bn-btn" onclick="go('p-home')"><i class="ti ti-home-2"></i><span>Accueil</span></button>
+      <button class="bn-btn"><i class="ti ti-search"></i><span>Catalogue</span></button>
+      <button class="bn-btn on"><i class="ti ti-books"></i><span>Mes cours</span></button>
+      <button class="bn-btn" onclick="go('p-chatbot')"><i class="ti ti-sparkles"></i><span>Assistant</span></button>
+      <button class="bn-btn" onclick="go('p-profile')"><i class="ti ti-user"></i><span>Profil</span></button>
+    </nav>
+  </div>
+
+  <!-- ═══════════ ADMIN ═══════════ -->
+  <div class="page" id="p-admin" data-screen-label="04 Admin">
+    <div class="appbar">
+      <div class="appbar-row">
+        <button class="icon-btn" onclick="go('p-profile')" aria-label="Retour"><i class="ti ti-arrow-left"></i></button>
+        <div class="logo" style="text-align:center;font-size:14px;">Tableau de bord</div>
+        <button class="icon-btn" aria-label="Exporter"><i class="ti ti-file-download"></i></button>
+      </div>
+    </div>
+    <div class="adm-band">
+      <h2>DIGITALES Academy</h2>
+      <div class="sub"><i class="ti ti-building-community"></i> Vue d'ensemble · 4 universités partenaires actives</div>
+      <div class="kpi-grid">
+        <div class="kpi">
+          <div class="lab">Apprenants <i class="ti ti-users"></i></div>
+          <strong>1 140</strong>
+          <div class="trend"><i class="ti ti-trending-up"></i> +87 ce mois</div>
+        </div>
+        <div class="kpi">
+          <div class="lab">Complétion <i class="ti ti-check"></i></div>
+          <strong>67%</strong>
+          <div class="trend"><i class="ti ti-trending-up"></i> +12 pts</div>
+        </div>
+        <div class="kpi">
+          <div class="lab">Revenus <i class="ti ti-currency-dollar"></i></div>
+          <strong>840K<small> FCFA</small></strong>
+          <div class="trend"><i class="ti ti-trending-up"></i> +18%</div>
+        </div>
+        <div class="kpi">
+          <div class="lab">Attestations <i class="ti ti-certificate"></i></div>
+          <strong>215</strong>
+          <div class="trend"><i class="ti ti-trending-up"></i> +32 ce mois</div>
+        </div>
+        <div class="kpi">
+          <div class="lab">Contenus traités <i class="ti ti-file-check"></i></div>
+          <strong>34</strong>
+          <div class="trend"><i class="ti ti-trending-up"></i> +8 ce mois</div>
+        </div>
+        <div class="kpi">
+          <div class="lab">Universités <i class="ti ti-building-community"></i></div>
+          <strong>4</strong>
+          <div class="trend" style="color:rgba(255,255,255,.5);">1 en négociation</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-hd">
+        <h2>Complétion par cours</h2>
+      </div>
+      <div class="chart-box">
+        <div class="chart-title">Taux de complétion moyen</div>
+        <div class="chart-sub">5 formations · Cohorte actuelle</div>
+        <div class="bars">
+          <div class="bc"><div class="bv">83%</div><div class="bar" style="height:83px;background:#1E3A5F;"></div><div class="bl">Internet</div></div>
+          <div class="bc"><div class="bv">40%</div><div class="bar" style="height:40px;background:#D97706;"></div><div class="bl">Données</div></div>
+          <div class="bc"><div class="bv">100%</div><div class="bar" style="height:100px;background:#15803D;"></div><div class="bl">IA</div></div>
+          <div class="bc"><div class="bv">55%</div><div class="bar" style="height:55px;background:#4C1D95;"></div><div class="bl">Souv.</div></div>
+          <div class="bc"><div class="bv">30%</div><div class="bar" style="height:30px;background:#991B1B;"></div><div class="bl">Cyber</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-hd">
+        <h2>Gestion</h2>
+      </div>
+      <div class="ami">
+        <div class="ami-ico blue"><i class="ti ti-users"></i></div>
+        <div class="ami-txt"><p>Gérer les apprenants</p><span>42 inscrits · 8 places restantes</span></div>
+        <div class="bdg b">42</div>
+      </div>
+      <div class="ami">
+        <div class="ami-ico teal"><i class="ti ti-books"></i></div>
+        <div class="ami-txt"><p>Gérer les cours</p><span>34 publiés · 8 en transformation</span></div>
+        <div class="bdg g">34</div>
+      </div>
+      <div class="ami">
+        <div class="ami-ico" style="background:var(--ai);"><i class="ti ti-sparkles"></i></div>
+        <div class="ami-txt"><p>Content Factory</p><span>34 contenus traités · 8 en attente</span></div>
+        <div class="bdg" style="background:var(--ai-bg);color:var(--ai);">34</div>
+      </div>
+      <div class="ami" onclick="go('p-universite')" style="cursor:pointer;">
+        <div class="ami-ico" style="background:var(--grn);"><i class="ti ti-building-community"></i></div>
+        <div class="ami-txt"><p>Universités partenaires</p><span>4 actives · 1 en négociation</span></div>
+        <i class="ti ti-chevron-right" style="color:var(--mut-2);"></i>
+      </div>
+      <div class="ami">
+        <div class="ami-ico amber"><i class="ti ti-certificate"></i></div>
+        <div class="ami-txt"><p>Attestations émises</p><span>215 délivrées · QR vérifiables</span></div>
+        <div class="bdg a">215</div>
+      </div>
+      <div class="ami">
+        <div class="ami-ico purple"><i class="ti ti-chart-bar"></i></div>
+        <div class="ami-txt"><p>Rapports & exports</p><span>Excel · CSV disponibles</span></div>
+        <i class="ti ti-chevron-right" style="color:var(--mut-2);"></i>
+      </div>
+      <div class="ami">
+        <div class="ami-ico red"><i class="ti ti-coins"></i></div>
+        <div class="ami-txt"><p>Revenus & paiements</p><span>840 000 FCFA ce mois</span></div>
+        <i class="ti ti-chevron-right" style="color:var(--mut-2);"></i>
+      </div>
+    </div>
+
+    <!-- Universités partenaires -->
+    <div class="section">
+      <div class="sec-hd">
+        <h2>Universités partenaires</h2>
+        <a class="see-all" href="#">Gérer <i class="ti ti-chevron-right"></i></a>
+      </div>
+      <div style="background:#fff;border:1px solid var(--bdr-2);border-radius:var(--r);padding:12px 14px;display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+        <div style="width:40px;height:40px;border-radius:10px;background:var(--brand);color:#fff;font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">UO</div>
+        <div style="flex:1;min-width:0;"><div style="font-size:13.5px;font-weight:600;color:var(--txt);">Université de Ouagadougou</div><div style="font-size:11.5px;color:var(--mut);margin-top:2px;">12 cours · 487 apprenants · 4.7 / 5</div></div>
+        <div style="font-size:10.5px;font-weight:600;padding:3px 9px;border-radius:6px;background:var(--grn-bg);color:var(--grn-dk);">Actif</div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--bdr-2);border-radius:var(--r);padding:12px 14px;display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+        <div style="width:40px;height:40px;border-radius:10px;background:var(--grn);color:#fff;font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">CS</div>
+        <div style="flex:1;min-width:0;"><div style="font-size:13.5px;font-weight:600;color:var(--txt);">CESAG Dakar</div><div style="font-size:11.5px;color:var(--mut);margin-top:2px;">8 cours · 312 apprenants · 4.9 / 5</div></div>
+        <div style="font-size:10.5px;font-weight:600;padding:3px 9px;border-radius:6px;background:var(--grn-bg);color:var(--grn-dk);">Actif</div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--bdr-2);border-radius:var(--r);padding:12px 14px;display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+        <div style="width:40px;height:40px;border-radius:10px;background:#4C1D95;color:#fff;font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">IS</div>
+        <div style="flex:1;min-width:0;"><div style="font-size:13.5px;font-weight:600;color:var(--txt);">ISTIC Cameroun</div><div style="font-size:11.5px;color:var(--mut);margin-top:2px;">6 cours · 198 apprenants · 4.6 / 5</div></div>
+        <div style="font-size:10.5px;font-weight:600;padding:3px 9px;border-radius:6px;background:var(--grn-bg);color:var(--grn-dk);">Actif</div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--bdr-2);border-radius:var(--r);padding:12px 14px;display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+        <div style="width:40px;height:40px;border-radius:10px;background:#92400E;color:#fff;font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">UA</div>
+        <div style="flex:1;min-width:0;"><div style="font-size:13.5px;font-weight:600;color:var(--txt);">Université d'Abomey-Calavi</div><div style="font-size:11.5px;color:var(--mut);margin-top:2px;">5 cours · 143 apprenants · 4.8 / 5</div></div>
+        <div style="font-size:10.5px;font-weight:600;padding:3px 9px;border-radius:6px;background:#FEFCE8;color:#713F12;">Négociation</div>
+      </div>
+      <button style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:#fff;border:1px dashed var(--bdr);border-radius:var(--r);padding:12px;font-size:13px;font-weight:500;color:var(--txt-2);margin-top:4px;">
+        <i class="ti ti-plus" style="font-size:16px;"></i>
+        Ajouter une université partenaire
+      </button>
+    </div>
+
+    <div class="spacer"></div>
+    <nav class="bottom-nav">
+      <button class="bn-btn" onclick="go('p-home')"><i class="ti ti-home-2"></i><span>Accueil</span></button>
+      <button class="bn-btn"><i class="ti ti-search"></i><span>Catalogue</span></button>
+      <button class="bn-btn"><i class="ti ti-books"></i><span>Mes cours</span></button>
+      <button class="bn-btn"><i class="ti ti-certificate"></i><span>Attestations</span></button>
+      <button class="bn-btn on" onclick="go('p-profile')"><i class="ti ti-shield-lock"></i><span>Admin</span></button>
+    </nav>
+  </div>
+
+  <!-- ═══════════ PROFILE ═══════════ -->
+  <div class="page" id="p-profile" data-screen-label="05 Profil">
+    <div class="appbar">
+      <div class="appbar-row">
+        <button class="icon-btn" onclick="go('p-home')" aria-label="Accueil"><i class="ti ti-arrow-left"></i></button>
+        <div class="logo" style="text-align:center;font-size:14px;">Mon profil</div>
+        <button class="icon-btn" aria-label="Paramètres"><i class="ti ti-settings"></i></button>
+      </div>
+    </div>
+    <div class="prof-hero">
+      <div class="prof-av">AK<span class="edit"><i class="ti ti-camera"></i></span></div>
+      <h2>Aminata Koné</h2>
+      <div class="role"><i class="ti ti-id-badge-2"></i> Cadre technique · Ministère du Numérique</div>
+      <div class="pbadges">
+        <div class="pb2"><i class="ti ti-certificate"></i> 1 certificat</div>
+        <div class="pb2"><i class="ti ti-books"></i> 3 cours</div>
+        <div class="pb2"><i class="ti ti-star"></i> 91% moy.</div>
+      </div>
+    </div>
+
+    <div class="menu-group">
+      <h4>Mon compte</h4>
+      <div class="menu-list">
+        <button class="mi">
+          <div class="mi-ico"><i class="ti ti-user"></i></div>
+          <div class="mi-txt"><p>Informations personnelles</p><span>Nom, email, téléphone</span></div>
+          <i class="ti ti-chevron-right mi-arr"></i>
+        </button>
+        <button class="mi" onclick="go('p-apprenant')">
+          <div class="mi-ico"><i class="ti ti-books"></i></div>
+          <div class="mi-txt"><p>Mes cours et progression</p><span>3 cours · 68% en moyenne</span></div>
+          <i class="ti ti-chevron-right mi-arr"></i>
+        </button>
+        <button class="mi" onclick="go('p-apprenant')">
+          <div class="mi-ico"><i class="ti ti-certificate"></i></div>
+          <div class="mi-txt"><p>Mes certificats</p><span>1 obtenu · 1 en cours</span></div>
+          <i class="ti ti-chevron-right mi-arr"></i>
+        </button>
+        <button class="mi">
+          <div class="mi-ico"><i class="ti ti-receipt"></i></div>
+          <div class="mi-txt"><p>Historique des paiements</p><span>3 transactions</span></div>
+          <i class="ti ti-chevron-right mi-arr"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="menu-group">
+      <h4>Préférences</h4>
+      <div class="menu-list">
+        <div class="mi" style="cursor:default;">
+          <div class="mi-ico"><i class="ti ti-bell"></i></div>
+          <div class="mi-txt"><p>Notifications</p><span>Push, email</span></div>
+          <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+        </div>
+        <div class="mi" style="cursor:default;">
+          <div class="mi-ico"><i class="ti ti-wifi-off"></i></div>
+          <div class="mi-txt"><p>Mode économie de données</p><span>Vidéos en SD · Optimisé 3G</span></div>
+          <div class="toggle" onclick="this.classList.toggle('on')"></div>
+        </div>
+        <div class="mi" style="cursor:default;">
+          <div class="mi-ico"><i class="ti ti-download"></i></div>
+          <div class="mi-txt"><p>Téléchargement hors-ligne</p><span>Wi-Fi uniquement</span></div>
+          <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+        </div>
+        <button class="mi">
+          <div class="mi-ico"><i class="ti ti-lock"></i></div>
+          <div class="mi-txt"><p>Sécurité et mot de passe</p><span>Modifier · Activer 2FA</span></div>
+          <i class="ti ti-chevron-right mi-arr"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="menu-group">
+      <h4>Administration</h4>
+      <div class="menu-list">
+        <button class="mi" onclick="go('p-admin')">
+          <div class="mi-ico admin"><i class="ti ti-shield-lock"></i></div>
+          <div class="mi-txt"><p style="color:var(--brand);font-weight:700;">Accéder à l'interface admin</p><span>Vue d'ensemble DIGITALES Academy</span></div>
+          <i class="ti ti-chevron-right mi-arr"></i>
+        </button>
+        <button class="mi" onclick="go('p-universite')">
+          <div class="mi-ico" style="background:linear-gradient(135deg,var(--grn),#15803D);"><i class="ti ti-building-community" style="color:#fff;"></i></div>
+          <div class="mi-txt"><p style="color:var(--grn);font-weight:600;">Espace université partenaire</p><span>Gérer vos contenus et revenus</span></div>
+          <i class="ti ti-chevron-right mi-arr"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="menu-group">
+      <h4>Aide & support</h4>
+      <div class="menu-list">
+        <button class="mi">
+          <div class="mi-ico"><i class="ti ti-help"></i></div>
+          <div class="mi-txt"><p>Centre d'aide</p></div>
+          <i class="ti ti-chevron-right mi-arr"></i>
+        </button>
+        <button class="mi">
+          <div class="mi-ico"><i class="ti ti-message-circle"></i></div>
+          <div class="mi-txt"><p>Contacter le support</p></div>
+          <i class="ti ti-chevron-right mi-arr"></i>
+        </button>
+        <button class="mi">
+          <div class="mi-ico"><i class="ti ti-file-text"></i></div>
+          <div class="mi-txt"><p>Mentions légales & confidentialité</p></div>
+          <i class="ti ti-chevron-right mi-arr"></i>
+        </button>
+      </div>
+      <button class="btn-logout" onclick="go('p-home')">
+        <i class="ti ti-logout" style="font-size:16px;vertical-align:-3px;"></i> Se déconnecter
+      </button>
+    </div>
+
+    <nav class="bottom-nav">
+      <button class="bn-btn" onclick="go('p-home')"><i class="ti ti-home-2"></i><span>Accueil</span></button>
+      <button class="bn-btn"><i class="ti ti-search"></i><span>Catalogue</span></button>
+      <button class="bn-btn" onclick="go('p-apprenant')"><i class="ti ti-books"></i><span>Mes cours</span></button>
+      <button class="bn-btn" onclick="go('p-chatbot')"><i class="ti ti-sparkles"></i><span>Assistant</span></button>
+      <button class="bn-btn on"><i class="ti ti-user"></i><span>Profil</span></button>
+    </nav>
+  </div>
+
+  <!-- ═══════════ UNIVERSITÉ ═══════════ -->
+  <div class="page" id="p-universite" data-screen-label="06 Université">
+    <div class="appbar">
+      <div class="appbar-row">
+        <button class="icon-btn" onclick="go('p-profile')" aria-label="Retour"><i class="ti ti-arrow-left"></i></button>
+        <div class="logo">DIGITALES <span>Academy</span></div>
+        <button class="icon-btn" aria-label="Notifications"><i class="ti ti-bell"></i><span class="dot"></span></button>
+      </div>
+    </div>
+
+    <div style="background:linear-gradient(160deg,var(--grn),#14532D);color:#fff;padding:16px 18px 24px;">
+      <div style="font-size:10.5px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:4px;">Espace partenaire</div>
+      <div style="font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:20px;margin-bottom:2px;">Université de Ouagadougou</div>
+      <div style="font-size:12px;color:rgba(255,255,255,.65);margin-bottom:18px;display:flex;align-items:center;gap:5px;"><i class="ti ti-map-pin" style="font-size:13px;"></i> Campus DIGITALES Academy · Burkina Faso</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+        <div style="background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:12px 8px;text-align:center;">
+          <div style="font-family:'IBM Plex Sans',sans-serif;font-size:20px;font-weight:700;color:#fff;line-height:1;margin-bottom:4px;">12</div>
+          <div style="font-size:10px;color:rgba(255,255,255,.65);">Cours publiés</div>
+        </div>
+        <div style="background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:12px 8px;text-align:center;">
+          <div style="font-family:'IBM Plex Sans',sans-serif;font-size:20px;font-weight:700;color:#fff;line-height:1;margin-bottom:4px;">487</div>
+          <div style="font-size:10px;color:rgba(255,255,255,.65);">Apprenants</div>
+        </div>
+        <div style="background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:12px 8px;text-align:center;">
+          <div style="font-family:'IBM Plex Sans',sans-serif;font-size:20px;font-weight:700;color:#fff;line-height:1;margin-bottom:4px;">4.7</div>
+          <div style="font-size:10px;color:rgba(255,255,255,.65);">Note / 5</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-hd">
+        <h2>Mes contenus</h2>
+        <a class="see-all" href="#">Tout voir <i class="ti ti-chevron-right"></i></a>
+      </div>
+      <div style="background:#fff;border:1px solid var(--bdr-2);border-radius:var(--r);padding:13px;display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+        <div style="width:40px;height:40px;border-radius:10px;background:#1E3A5F;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="ti ti-network" style="font-size:20px;color:#fff;"></i></div>
+        <div style="flex:1;min-width:0;"><div style="font-size:13.5px;font-weight:600;color:var(--txt);margin-bottom:2px;">Introduction au Droit Numérique</div><div style="font-size:11.5px;color:var(--mut);">Dr. Dramane Sanou · 145 apprenants</div></div>
+        <div style="font-size:10.5px;font-weight:600;padding:3px 9px;border-radius:6px;background:var(--grn-bg);color:var(--grn-dk);">Publié</div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--bdr-2);border-radius:var(--r);padding:13px;display:flex;align-items:flex-start;gap:12px;margin-bottom:8px;">
+        <div style="width:40px;height:40px;border-radius:10px;background:#15803D;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><i class="ti ti-database" style="font-size:20px;color:#fff;"></i></div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:13.5px;font-weight:600;color:var(--txt);margin-bottom:2px;">Économie Numérique Africaine</div>
+          <div style="font-size:11.5px;color:var(--mut);margin-bottom:8px;">Prof. Issa Compaoré</div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+            <div style="flex:1;height:4px;background:var(--bg-2);border-radius:99px;overflow:hidden;"><div style="width:65%;height:100%;background:var(--acc);border-radius:99px;"></div></div>
+            <span style="font-size:10px;color:var(--mut);font-weight:600;">65%</span>
+          </div>
+          <div style="font-size:11px;color:var(--ai);display:flex;align-items:center;gap:4px;"><i class="ti ti-sparkles" style="font-size:12px;"></i> Transformation en cours</div>
+        </div>
+        <div style="font-size:10.5px;font-weight:600;padding:3px 9px;border-radius:6px;background:#FFFBEB;color:#92400E;flex-shrink:0;">En cours</div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--bdr-2);border-radius:var(--r);padding:13px;display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+        <div style="width:40px;height:40px;border-radius:10px;background:#4C1D95;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="ti ti-shield" style="font-size:20px;color:#fff;"></i></div>
+        <div style="flex:1;min-width:0;"><div style="font-size:13.5px;font-weight:600;color:var(--txt);margin-bottom:2px;">Cybersécurité pour Juristes</div><div style="font-size:11.5px;color:var(--mut);">Dr. Rasmané Ouédraogo</div></div>
+        <div style="font-size:10.5px;font-weight:600;padding:3px 9px;border-radius:6px;background:var(--bg-2);color:var(--mut);">En attente</div>
+      </div>
+      <div style="background:var(--bg);border:1px dashed var(--bdr);border-radius:var(--r);padding:13px;display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+        <div style="width:40px;height:40px;border-radius:10px;background:var(--bg-2);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="ti ti-brain" style="font-size:20px;color:var(--mut);"></i></div>
+        <div style="flex:1;min-width:0;"><div style="font-size:13.5px;font-weight:600;color:var(--mut);margin-bottom:2px;">Data Science Appliquée</div><div style="font-size:11.5px;color:var(--mut-2);">À compléter</div></div>
+        <div style="font-size:10.5px;font-weight:600;padding:3px 9px;border-radius:6px;background:var(--bg-2);color:var(--mut-2);">Brouillon</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-hd"><h2>Déposer un contenu</h2></div>
+      <div id="upload-zone" onclick="simulateUpload()" style="border:2px dashed var(--bdr);border-radius:var(--r-lg);padding:28px 16px;text-align:center;background:#fff;cursor:pointer;transition:all .2s ease;">
+        <i class="ti ti-cloud-upload" style="font-size:36px;color:var(--mut-2);margin-bottom:10px;display:block;"></i>
+        <div style="font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:15px;color:var(--txt);margin-bottom:4px;">Déposez vos fichiers ici</div>
+        <div style="font-size:13px;color:var(--mut);margin-bottom:12px;">PDF, PPTX, MP4, DOCX acceptés</div>
+        <div style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:14px;">
+          <span style="background:var(--bg-2);color:var(--txt-2);font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px;font-family:monospace;">.pdf</span>
+          <span style="background:var(--bg-2);color:var(--txt-2);font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px;font-family:monospace;">.pptx</span>
+          <span style="background:var(--bg-2);color:var(--txt-2);font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px;font-family:monospace;">.mp4</span>
+          <span style="background:var(--bg-2);color:var(--txt-2);font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px;font-family:monospace;">.docx</span>
+        </div>
+        <button class="btn btn-dark" style="height:40px;font-size:13px;pointer-events:none;"><i class="ti ti-plus"></i> Sélectionner un fichier</button>
+        <div style="font-size:11.5px;color:var(--mut);margin-top:10px;">Transformation par l'équipe DIGITALES en 3 à 5 jours ouvrés</div>
+      </div>
+      <div id="upload-toast" style="display:none;align-items:center;gap:10px;background:var(--grn-bg);border:1px solid rgba(21,128,61,.2);border-radius:var(--r);padding:14px 16px;margin-top:10px;font-size:13px;font-weight:500;color:var(--grn-dk);">
+        <i class="ti ti-check" style="font-size:18px;color:var(--grn);flex-shrink:0;"></i>
+        Contenu reçu. Transformation en cours (3 à 5 jours ouvrés).
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-hd"><h2>Revenus du mois</h2></div>
+      <div style="background:#fff;border:1px solid var(--bdr-2);border-radius:var(--r-lg);padding:16px;">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:16px;">
+          <span style="font-size:13px;color:var(--mut);">Total généré</span>
+          <span style="font-family:'IBM Plex Sans',sans-serif;font-size:22px;font-weight:700;color:var(--grn);">145 000 <span style="font-size:12px;font-weight:400;color:var(--mut);font-family:'Inter',sans-serif;">FCFA</span></span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;padding:12px;background:var(--bg);border-radius:var(--r-sm);margin-bottom:14px;">
+          <div style="display:flex;justify-content:space-between;font-size:13px;"><span style="color:var(--txt-2);">Votre part (75%)</span><span style="font-weight:600;color:var(--grn);">108 750 FCFA</span></div>
+          <div style="height:1px;background:var(--bdr-2);"></div>
+          <div style="display:flex;justify-content:space-between;font-size:13px;"><span style="color:var(--txt-2);">Commission DIGITALES (25%)</span><span style="color:var(--mut);">36 250 FCFA</span></div>
+        </div>
+        <button class="btn btn-dark btn-full" style="height:42px;font-size:13px;"><i class="ti ti-send"></i> Demander un virement</button>
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+    <nav class="bottom-nav">
+      <button class="bn-btn on"><i class="ti ti-home-2"></i><span>Accueil</span></button>
+      <button class="bn-btn"><i class="ti ti-books"></i><span>Contenus</span></button>
+      <button class="bn-btn"><i class="ti ti-chart-bar"></i><span>Analytics</span></button>
+      <button class="bn-btn"><i class="ti ti-coins"></i><span>Revenus</span></button>
+      <button class="bn-btn" onclick="go('p-profile')"><i class="ti ti-settings"></i><span>Réglages</span></button>
+    </nav>
+  </div>
+
+  <!-- ═══════════ CHATBOT IA ═══════════ -->
+  <div class="page" id="p-chatbot" data-screen-label="07 Assistant IA">
+    <div class="appbar">
+      <div class="appbar-row">
+        <button class="icon-btn" onclick="go('p-apprenant')" aria-label="Retour"><i class="ti ti-arrow-left"></i></button>
+        <div style="flex:1;text-align:center;">
+          <div style="font-size:14.5px;font-weight:600;color:#fff;">Assistant DIGITALES</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.65);display:flex;align-items:center;justify-content:center;gap:5px;margin-top:1px;">
+            <span style="width:6px;height:6px;background:#22C55E;border-radius:50%;display:inline-block;"></span> En ligne
+          </div>
+        </div>
+        <div style="width:40px;"></div>
+      </div>
+    </div>
+
+    <div id="chatbot-window" style="padding:16px 16px 100px;display:flex;flex-direction:column;gap:14px;">
+      <div class="chat-msg assistant">
+        <div class="chat-av"><i class="ti ti-sparkles"></i></div>
+        <div class="chat-bubble">Bonjour Aminata. Je peux vous aider à identifier les formations les plus adaptées à votre profil et vos objectifs.<br><br><strong>Quel est votre principal objectif en ce moment ?</strong></div>
+      </div>
+      <div id="chatbot-suggestions" style="display:flex;flex-direction:column;gap:8px;padding-left:38px;">
+        <button onclick="selectSuggestion(this,'career')" style="background:#fff;border:1px solid var(--bdr);border-radius:10px;padding:10px 14px;font-size:13.5px;font-weight:500;color:var(--txt);text-align:left;cursor:pointer;transition:all .15s ease;">Progresser dans ma carrière</button>
+        <button onclick="selectSuggestion(this,'skills')" style="background:#fff;border:1px solid var(--bdr);border-radius:10px;padding:10px 14px;font-size:13.5px;font-weight:500;color:var(--txt);text-align:left;cursor:pointer;transition:all .15s ease;">Renforcer mes compétences techniques</button>
+        <button onclick="selectSuggestion(this,'project')" style="background:#fff;border:1px solid var(--bdr);border-radius:10px;padding:10px 14px;font-size:13.5px;font-weight:500;color:var(--txt);text-align:left;cursor:pointer;transition:all .15s ease;">Développer un projet ou une activité</button>
+        <button onclick="selectSuggestion(this,'update')" style="background:#fff;border:1px solid var(--bdr);border-radius:10px;padding:10px 14px;font-size:13.5px;font-weight:500;color:var(--txt);text-align:left;cursor:pointer;transition:all .15s ease;">Me mettre à jour sur le numérique</button>
+      </div>
+    </div>
+
+    <div style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:560px;background:#fff;border-top:1px solid var(--bdr-2);padding:10px 16px calc(10px + env(safe-area-inset-bottom));z-index:50;">
+      <div class="chat-input-box">
+        <input type="text" id="chatbot-input" placeholder="Décrivez vos objectifs…"/>
+        <button onclick="sendChatbotMsg()" aria-label="Envoyer"><i class="ti ti-send"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ QUIZ IA ═══════════ -->
+  <div class="page" id="p-quiz" data-screen-label="08 Quiz">
+    <div class="appbar light">
+      <div class="appbar-row">
+        <button class="icon-btn" onclick="go('p-course')" aria-label="Retour"><i class="ti ti-arrow-left"></i></button>
+        <div style="flex:1;">
+          <div style="font-size:13.5px;font-weight:600;color:var(--txt);">Quiz · Module 3 — RIR et AFRINIC</div>
+          <div style="font-size:11px;color:var(--ai);font-weight:500;display:flex;align-items:center;gap:4px;margin-top:1px;"><i class="ti ti-sparkles" style="font-size:12px;"></i> Généré depuis le contenu du cours</div>
+        </div>
+        <div style="font-size:12px;color:var(--mut);font-weight:500;display:flex;align-items:center;gap:4px;"><i class="ti ti-clock" style="font-size:14px;"></i> 2:34</div>
+      </div>
+      <div style="height:3px;background:var(--bg-2);border-radius:99px;margin:8px 0 0;overflow:hidden;">
+        <div id="quiz-progress" style="width:60%;height:100%;background:var(--brand);border-radius:99px;transition:width .4s ease;"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--mut);margin-top:5px;">
+        <span id="quiz-counter">Question 3 sur 5</span>
+        <button style="font-size:11px;color:var(--mut-2);background:none;border:none;cursor:pointer;font-weight:500;">Passer cette question</button>
+      </div>
+    </div>
+
+    <div style="padding:20px 16px;" id="quiz-body">
+      <div style="background:#fff;border:1px solid var(--bdr-2);border-radius:var(--r);padding:16px;margin-bottom:20px;">
+        <div style="font-size:11px;font-weight:500;color:var(--ai);display:flex;align-items:center;gap:5px;margin-bottom:10px;"><i class="ti ti-sparkles" style="font-size:12px;"></i> Question générée depuis le module 3</div>
+        <div style="font-size:16px;font-weight:600;color:var(--txt);line-height:1.4;font-family:'IBM Plex Sans',sans-serif;">Quel est le rôle principal d'AFRINIC dans l'écosystème Internet africain ?</div>
+      </div>
+      <div id="quiz-options" style="display:flex;flex-direction:column;gap:10px;">
+        <button class="quiz-opt" onclick="selectAnswer(this,false)" data-letter="A">
+          <span class="opt-letter">A</span><span class="opt-text">Régulation des contenus publiés en Afrique</span>
+        </button>
+        <button class="quiz-opt correct-answer" onclick="selectAnswer(this,true)" data-letter="B">
+          <span class="opt-letter">B</span><span class="opt-text">Attribution et gestion des adresses IP pour l'Afrique</span>
+        </button>
+        <button class="quiz-opt" onclick="selectAnswer(this,false)" data-letter="C">
+          <span class="opt-letter">C</span><span class="opt-text">Certification des opérateurs télécom africains</span>
+        </button>
+        <button class="quiz-opt" onclick="selectAnswer(this,false)" data-letter="D">
+          <span class="opt-letter">D</span><span class="opt-text">Contrôle des noms de domaine .africa</span>
+        </button>
+      </div>
+      <div id="quiz-feedback" style="display:none;margin-top:16px;">
+        <div id="quiz-feedback-box" style="border-radius:var(--r);padding:14px;">
+          <div id="quiz-feedback-title" style="font-size:14px;font-weight:600;margin-bottom:6px;display:flex;align-items:center;gap:8px;"></div>
+          <div id="quiz-feedback-text" style="font-size:13px;line-height:1.55;"></div>
+        </div>
+        <button class="btn btn-dark btn-full" style="margin-top:12px;" onclick="nextQuestion()">Question suivante <i class="ti ti-arrow-right"></i></button>
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+    <nav class="bottom-nav">
+      <button class="bn-btn" onclick="go('p-home')"><i class="ti ti-home-2"></i><span>Accueil</span></button>
+      <button class="bn-btn" onclick="go('p-course')"><i class="ti ti-arrow-left"></i><span>Cours</span></button>
+      <button class="bn-btn on"><i class="ti ti-checkbox"></i><span>Quiz</span></button>
+      <button class="bn-btn"><i class="ti ti-certificate"></i><span>Attestations</span></button>
+      <button class="bn-btn" onclick="go('p-profile')"><i class="ti ti-user"></i><span>Profil</span></button>
+    </nav>
+  </div>
+
+</div>
+
+
+
+<script>
+const pages = ['p-home','p-course','p-apprenant','p-admin','p-profile','p-universite','p-chatbot','p-quiz'];
+function go(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  const el = document.getElementById(id);
+  if(el){
+    el.classList.add('on');
+    window.scrollTo({top:0,behavior:'instant'});
+  }
+}
+function setCat(btn){
+  document.querySelectorAll('#cats .cat').forEach(c=>c.classList.remove('on'));
+  btn.classList.add('on');
+}
+function setTab(btn,id){
+  const tabs = btn.parentElement.querySelectorAll('.tab');
+  tabs.forEach(t=>t.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('#p-course .tab-content').forEach(c=>c.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+}
+function toggleMod(btn){
+  btn.parentElement.classList.toggle('open');
+}
+function openSheet(){
+  document.getElementById('sheet-bd').classList.add('on');
+  document.getElementById('sheet').classList.add('on');
+}
+function closeSheet(){
+  document.getElementById('sheet-bd').classList.remove('on');
+  document.getElementById('sheet').classList.remove('on');
+}
+// Keyboard nav for desktop preview
+document.addEventListener('keydown',e=>{
+  const i = pages.indexOf(document.querySelector('.page.on')?.id);
+  if(e.key==='ArrowRight' && i<pages.length-1) go(pages[i+1]);
+  if(e.key==='ArrowLeft' && i>0) go(pages[i-1]);
+});
+
+/* ─── Chat cours (onglet IA) ─── */
+function sendChatMsg() {
+  const input = document.getElementById('chat-input');
+  const win = document.getElementById('chat-window');
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  const userMsg = document.createElement('div');
+  userMsg.className = 'chat-msg user';
+  const bubble = document.createElement('div');
+  bubble.className = 'chat-bubble';
+  bubble.textContent = text;
+  userMsg.appendChild(bubble);
+  win.appendChild(userMsg);
+  setTimeout(() => {
+    const aiMsg = document.createElement('div');
+    aiMsg.className = 'chat-msg assistant';
+    aiMsg.innerHTML = `<div class="chat-av"><i class="ti ti-sparkles"></i></div><div class="chat-bubble">Ce point est couvert dans le cours. Consultez les ressources du module correspondant pour approfondir. Avez-vous d'autres questions sur ce contenu ?<br><br><span style="font-size:11px;color:var(--mut);">Source : Contenu du cours</span></div>`;
+    win.appendChild(aiMsg);
+    win.scrollTop = win.scrollHeight;
+  }, 800);
+}
+
+/* ─── Upload simulé ─── */
+function simulateUpload() {
+  const zone = document.getElementById('upload-zone');
+  zone.style.borderColor = 'var(--brand)';
+  zone.style.background = 'var(--bg)';
+  setTimeout(() => {
+    zone.style.borderColor = '';
+    zone.style.background = '';
+    const toast = document.getElementById('upload-toast');
+    toast.style.display = 'flex';
+    setTimeout(() => { toast.style.display = 'none'; }, 5000);
+  }, 1200);
+}
+
+/* ─── Chatbot IA ─── */
+const chatbotReplies = {
+  career: {
+    msg: `Pour progresser dans votre carrière, la gouvernance des données est la compétence la plus demandée par les organisations africaines en 2026. Voici deux formations adaptées à votre profil :`,
+    courses: [
+      { title:'Gouvernance et protection des données personnelles', univ:'CESAG Dakar', price:'20 000', color:'#15803D' },
+      { title:'Souveraineté numérique et infrastructures critiques', univ:'ISTIC Cameroun', price:'22 000', color:'#92400E' }
+    ]
+  },
+  skills: {
+    msg: `Pour renforcer vos compétences techniques, je recommande de commencer par les fondamentaux de la gouvernance Internet — un prérequis pour comprendre l'ensemble de l'écosystème numérique africain :`,
+    courses: [
+      { title:'Fondamentaux de la gouvernance de l\'Internet', univ:'Univ. Ouagadougou', price:'25 000', color:'#1E3A5F' },
+      { title:'Cybersécurité pour professionnels', univ:'ISTIC Cameroun', price:'Gratuit', color:'#15803D', sponsored:true }
+    ]
+  },
+  project: {
+    msg: `Pour développer un projet numérique, je recommande de commencer par l'IA responsable — un domaine à forte demande en Afrique et directement applicable à de nombreux projets :`,
+    courses: [
+      { title:'Introduction à l\'IA responsable pour décideurs', univ:'CESAG Dakar', price:'18 000', color:'#4C1D95' },
+      { title:'Cybersécurité pour professionnels', univ:'ISTIC Cameroun', price:'Gratuit', color:'#15803D', sponsored:true }
+    ]
+  },
+  update: {
+    msg: `Pour vous mettre à jour sur le numérique, je recommande de suivre les formations dans cet ordre : gouvernance Internet, puis données, puis IA. Voici les deux premières :`,
+    courses: [
+      { title:'Fondamentaux de la gouvernance de l\'Internet', univ:'Univ. Ouagadougou', price:'25 000', color:'#1E3A5F' },
+      { title:'Gouvernance et protection des données personnelles', univ:'CESAG Dakar', price:'20 000', color:'#15803D' }
+    ]
+  }
+};
+
+function selectSuggestion(btn, type) {
+  const sugg = document.getElementById('chatbot-suggestions');
+  if (sugg) sugg.style.display = 'none';
+  const win = document.getElementById('chatbot-window');
+  const reply = chatbotReplies[type];
+  if (!reply) return;
+  const userMsg = document.createElement('div');
+  userMsg.className = 'chat-msg user';
+  const sbubble = document.createElement('div');
+  sbubble.className = 'chat-bubble';
+  sbubble.textContent = btn.textContent.trim();
+  userMsg.appendChild(sbubble);
+  win.appendChild(userMsg);
+  setTimeout(() => {
+    const aiMsg = document.createElement('div');
+    aiMsg.className = 'chat-msg assistant';
+    aiMsg.innerHTML = `<div class="chat-av"><i class="ti ti-sparkles"></i></div><div class="chat-bubble">${reply.msg}</div>`;
+    win.appendChild(aiMsg);
+    reply.courses.forEach(c => {
+      const card = document.createElement('div');
+      card.style.cssText = 'margin-left:38px;margin-top:8px;';
+      card.innerHTML = `<div style="background:#fff;border:1px solid var(--bdr-2);border-radius:var(--r);padding:12px;cursor:pointer;" onclick="go('p-course')"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><div style="width:36px;height:36px;border-radius:8px;background:${c.color};display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="ti ti-books" style="font-size:18px;color:#fff;"></i></div><div style="flex:1;min-width:0;"><div style="font-size:11px;color:var(--mut);margin-bottom:2px;">${c.univ}</div><div style="font-size:13px;font-weight:600;color:var(--txt);line-height:1.3;">${c.title}</div></div></div><div style="display:flex;align-items:center;justify-content:space-between;">${c.sponsored ? `<span style="font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px;background:var(--sponsored-bg);color:var(--sponsored);">Sponsorisé · Gratuit</span>` : `<span style="font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:14px;color:var(--brand);">${c.price} FCFA</span>`}<button class="btn btn-dark btn-sm" style="height:32px;font-size:12px;pointer-events:none;">Voir le cours</button></div></div>`;
+      win.appendChild(card);
+    });
+    win.scrollTop = win.scrollHeight;
+  }, 700);
+}
+
+function sendChatbotMsg() {
+  const input = document.getElementById('chatbot-input');
+  const win = document.getElementById('chatbot-window');
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  const userMsg = document.createElement('div');
+  userMsg.className = 'chat-msg user';
+  const cbubble = document.createElement('div');
+  cbubble.className = 'chat-bubble';
+  cbubble.textContent = text;
+  userMsg.appendChild(cbubble);
+  win.appendChild(userMsg);
+  setTimeout(() => {
+    const aiMsg = document.createElement('div');
+    aiMsg.className = 'chat-msg assistant';
+    aiMsg.innerHTML = `<div class="chat-av"><i class="ti ti-sparkles"></i></div><div class="chat-bubble">Merci pour cette précision. Consultez notre catalogue complet pour explorer toutes les formations disponibles selon votre profil.</div>`;
+    win.appendChild(aiMsg);
+    win.scrollTop = win.scrollHeight;
+  }, 700);
+}
+
+/* ─── Quiz ─── */
+let quizAnswered = false;
+let quizScore = 0;
+let quizCurrent = 3;
+const quizTotal = 5;
+
+function selectAnswer(btn, isCorrect) {
+  if (quizAnswered) return;
+  quizAnswered = true;
+  document.querySelectorAll('.quiz-opt').forEach(o => o.classList.add('disabled'));
+  const feedback = document.getElementById('quiz-feedback');
+  const fbBox = document.getElementById('quiz-feedback-box');
+  const fbTitle = document.getElementById('quiz-feedback-title');
+  const fbText = document.getElementById('quiz-feedback-text');
+  if (isCorrect) {
+    btn.classList.remove('disabled');
+    btn.classList.add('selected-right');
+    quizScore++;
+    fbBox.style.cssText = 'border-radius:var(--r);padding:14px;background:var(--grn-bg);border:1px solid rgba(21,128,61,.15);';
+    fbTitle.innerHTML = '<i class="ti ti-check" style="color:var(--grn);font-size:16px;"></i> Bonne réponse';
+    fbTitle.style.color = 'var(--grn-dk)';
+    fbText.textContent = 'AFRINIC (African Network Information Centre) est le Registre Régional Internet pour l\'Afrique. Il alloue et gère les blocs d\'adresses IPv4 et IPv6 pour tout le continent africain.';
+    fbText.style.color = 'var(--grn-dk)';
+  } else {
+    btn.classList.remove('disabled');
+    btn.classList.add('selected-wrong');
+    document.querySelector('.correct-answer').classList.remove('disabled');
+    document.querySelector('.correct-answer').classList.add('reveal-right');
+    fbBox.style.cssText = 'border-radius:var(--r);padding:14px;background:var(--red-bg);border:1px solid rgba(153,27,27,.12);';
+    fbTitle.innerHTML = '<i class="ti ti-x" style="color:var(--red);font-size:16px;"></i> Réponse incorrecte';
+    fbTitle.style.color = 'var(--red)';
+    fbText.textContent = 'La bonne réponse est B. AFRINIC gère l\'allocation des adresses IP pour l\'Afrique, en tant que l\'un des 5 Registres Régionaux Internet (RIR) mondiaux sous l\'autorité de l\'ICANN.';
+    fbText.style.color = '#7F1D1D';
+  }
+  feedback.style.display = 'block';
+}
+
+function nextQuestion() {
+  quizAnswered = false;
+  quizCurrent++;
+  document.getElementById('quiz-feedback').style.display = 'none';
+  if (quizCurrent > quizTotal) {
+    const score = Math.round((quizScore / quizTotal) * 100);
+    document.getElementById('quiz-body').innerHTML = `<div style="text-align:center;padding:32px 8px;"><div style="font-family:'IBM Plex Sans',sans-serif;font-size:52px;font-weight:700;color:var(--brand);line-height:1;margin-bottom:8px;">${score}%</div><div style="font-size:15px;color:var(--txt-2);margin-bottom:4px;">${quizScore} sur ${quizTotal} questions réussies</div><div style="font-size:13px;color:var(--mut);margin-bottom:24px;">${score >= 80 ? 'Résultat excellent. Module validé.' : score >= 60 ? 'Bon résultat. Quelques points à revoir.' : 'Continuez à revoir le module.'}</div><div style="display:inline-flex;align-items:center;gap:10px;background:var(--grn-bg);border:1px solid rgba(21,128,61,.15);border-radius:var(--r);padding:12px 16px;margin-bottom:24px;"><i class="ti ti-certificate" style="font-size:20px;color:var(--grn);"></i><div style="text-align:left;"><div style="font-size:13px;font-weight:600;color:var(--grn-dk);">Quiz complété</div><div style="font-size:11.5px;color:var(--grn);">Module 3 validé</div></div></div><div style="display:flex;gap:10px;"><button class="btn btn-outline" style="flex:1;" onclick="go('p-course')"><i class="ti ti-arrow-left"></i> Retour au cours</button><button class="btn btn-dark" style="flex:1;" onclick="go('p-course')">Module suivant <i class="ti ti-arrow-right"></i></button></div></div>`;
+    return;
+  }
+  document.getElementById('quiz-counter').textContent = `Question ${quizCurrent} sur ${quizTotal}`;
+  document.getElementById('quiz-progress').style.width = `${(quizCurrent/quizTotal)*100}%`;
+  document.querySelectorAll('.quiz-opt').forEach(o => {
+    o.classList.remove('disabled','selected-right','selected-wrong','reveal-right');
+  });
+}
+
+/* ─── DOMContentLoaded listeners ─── */
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('chat-input')?.addEventListener('keydown', e => { if(e.key==='Enter') sendChatMsg(); });
+  document.getElementById('chatbot-input')?.addEventListener('keydown', e => { if(e.key==='Enter') sendChatbotMsg(); });
+});
+</script>
+</body>
+</html>
